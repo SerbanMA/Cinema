@@ -1,4 +1,4 @@
-//package cinema.domain.validators;
+package cinema.domain.validators;//package cinema.domain.validators;
 //
 //import org.junit.jupiter.api.Test;
 //import ro.ubb.cinema.domain.entities.*;

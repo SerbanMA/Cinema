@@ -2,10 +2,10 @@ package ro.ubb.cinema.web.config;
 
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import ro.ubb.cinema.config.JPAConfig;
+import ro.ubb.cinema.core.config.JPAConfig;
 
 @Configuration
-@ComponentScan({"ro.ubb.cinema"})
+@ComponentScan({"ro.ubb.cinema.core"})
 @Import({JPAConfig.class})
 @PropertySources({@PropertySource(value = "classpath:local/db.properties")})
 public class AppLocalConfig {

@@ -5,16 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.HttpMediaTypeException;
-import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.*;
-import ro.ubb.cinema.domain.validators.exceptions.ValidatorException;
-import ro.ubb.cinema.service.CinemaService;
-import ro.ubb.cinema.web.converter.CinemaConverter;
+import ro.ubb.cinema.core.service.CinemaService;
+
 import ro.ubb.cinema.web.dto.CinemaDto;
 import ro.ubb.cinema.web.dto.CinemasDto;
-
-import java.util.List;
+import ro.ubb.cinema.web.converter.CinemaConverter;
 
 @RestController
 public class CinemaController {

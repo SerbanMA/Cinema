@@ -1,7 +1,7 @@
 package ro.ubb.cinema.web.converter;
 
 import org.springframework.stereotype.Component;
-import ro.ubb.cinema.domain.entities.Cinema;
+import ro.ubb.cinema.core.domain.entities.Cinema;
 import ro.ubb.cinema.web.dto.CinemaDto;
 
 @Component

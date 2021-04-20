@@ -1,8 +1,7 @@
 package ro.ubb.cinema.web.dto;
 
 import lombok.*;
-import ro.ubb.cinema.domain.entities.Cinema;
-import ro.ubb.cinema.domain.entities.Room;
+import ro.ubb.cinema.core.domain.entities.Cinema;
 
 @NoArgsConstructor
 @AllArgsConstructor

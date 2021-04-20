@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.ubb.cinema.domain.entities.Ticket;
-import ro.ubb.cinema.service.TicketService;
 import ro.ubb.cinema.web.converter.TicketConverter;
-import ro.ubb.cinema.web.dto.CinemasDto;
 import ro.ubb.cinema.web.dto.TicketDto;
+import ro.ubb.cinema.core.service.TicketService;
 import ro.ubb.cinema.web.dto.TicketsDto;
 
 @RestController

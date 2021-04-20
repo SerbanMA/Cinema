@@ -1,6 +1,6 @@
 package ro.ubb.cinema.web.converter;
 
-import ro.ubb.cinema.domain.entities.BaseEntity;
+import ro.ubb.cinema.core.domain.entities.BaseEntity;
 import ro.ubb.cinema.web.dto.BaseDto;
 
 import java.util.Collection;

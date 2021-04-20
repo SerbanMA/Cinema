@@ -1,4 +1,4 @@
-//package cinema.repository;
+package cinema.repository;//package cinema.repository;
 //
 //import org.junit.jupiter.api.*;
 //import ro.ubb.cinema.domain.entities.BaseEntity;

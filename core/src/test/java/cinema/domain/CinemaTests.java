@@ -1,4 +1,4 @@
-//package cinema.domain;
+package cinema.domain;//package cinema.domain;
 //
 //import org.junit.jupiter.api.AfterAll;
 //import org.junit.jupiter.api.BeforeEach;

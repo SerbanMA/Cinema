@@ -1,4 +1,4 @@
-//package cinema.repository;
+package cinema.repository;//package cinema.repository;
 //
 //import org.apache.commons.dbcp2.BasicDataSource;
 //import org.junit.jupiter.api.AfterAll;

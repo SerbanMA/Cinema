@@ -1,10 +1,8 @@
 package ro.ubb.cinema.web.converter;
 
 import org.springframework.stereotype.Component;
-import ro.ubb.cinema.domain.entities.Cinema;
-import ro.ubb.cinema.domain.entities.Ticket;
-import ro.ubb.cinema.web.dto.CinemaDto;
 import ro.ubb.cinema.web.dto.TicketDto;
+import ro.ubb.cinema.core.domain.entities.Ticket;
 
 @Component
 public class TicketConverter extends BaseConverter<Ticket, TicketDto>{

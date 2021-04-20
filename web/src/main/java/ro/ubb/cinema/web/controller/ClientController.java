@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.ubb.cinema.service.ClientService;
+import ro.ubb.cinema.core.service.ClientService;
 import ro.ubb.cinema.web.converter.ClientConverter;
-import ro.ubb.cinema.web.dto.CinemasDto;
 import ro.ubb.cinema.web.dto.ClientDto;
 import ro.ubb.cinema.web.dto.ClientsDto;
 

@@ -1,4 +1,4 @@
-//package cinema.service;
+package cinema.service;//package cinema.service;
 //
 //import org.junit.jupiter.api.*;
 //import org.junit.jupiter.api.extension.ExtendWith;

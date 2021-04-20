@@ -2,10 +2,8 @@ package cinema.domain.entities;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ro.ubb.cinema.domain.entities.BaseEntity;
-import ro.ubb.cinema.domain.validators.BaseValidator;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import ro.ubb.cinema.core.domain.entities.BaseEntity;
+import ro.ubb.cinema.core.domain.validators.BaseValidator;
 
 class BaseEntityTest {
     private BaseEntity<Long> entity;

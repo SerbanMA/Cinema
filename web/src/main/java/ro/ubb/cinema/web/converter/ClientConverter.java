@@ -1,6 +1,6 @@
 package ro.ubb.cinema.web.converter;
 import org.springframework.stereotype.Component;
-import ro.ubb.cinema.domain.entities.Client;
+import ro.ubb.cinema.core.domain.entities.Client;
 import ro.ubb.cinema.web.dto.ClientDto;
 
 @Component
