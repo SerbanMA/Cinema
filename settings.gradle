@@ -1,0 +1,4 @@
+rootProject.name = 'lab5x-powerpuffgirls'
+include 'client'
+include 'web'
+include 'core'
