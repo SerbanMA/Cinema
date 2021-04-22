@@ -1,0 +1,38 @@
+body{
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.sidenav-container{
+  height: 100%;
+}
+
+.sidenav{
+  width: 200px;
+}
+
+
+/**/
+.primary-toolbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 6px 0 9px rgba(0,0,0,0.4);
+}
+
+.mat-toolbar.mat-primary {
+  background: #1F2233;
+  color: #66FCF1;
+}
+
+h1{
+  margin: 0;
+  padding: 5px 5px 5px 20px;
+  font-size: 32px;
+}
+
+

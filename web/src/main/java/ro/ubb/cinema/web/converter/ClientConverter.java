@@ -9,16 +9,16 @@ public class ClientConverter extends BaseConverter<Client, ClientDto>{
     public Client convertDtoToModel(ClientDto dto) {
         var model = new Client();
         model.setId(dto.getId());
-        model.setClientFirstName(dto.getFirstName());
-        model.setClientLastName(dto.getLastName());
-        model.setClientEmail(dto.getEmail());
-        model.setClientAge(dto.getAge());
+        model.setFirstName(dto.getFirstName());
+        model.setLastName(dto.getLastName());
+        model.setEmail(dto.getEmail());
+        model.setAge(dto.getAge());
         return model;
     }
 
     @Override
     public ClientDto convertModelToDto(Client client) {
-        ClientDto dto = new ClientDto(client.getClientFirstName(), client.getClientFirstName(), client.getClientEmail(), client.getClientAge());
+        ClientDto dto = new ClientDto(client.getFirstName(), client.getLastName(), client.getEmail(), client.getAge());
         dto.setId(client.getId());
         return dto;
     }

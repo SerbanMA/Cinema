@@ -18,7 +18,7 @@ public class RoomValidator implements Validator<Room>{
     public void validate(Room entity) throws ValidatorException {
 
         Optional.of(entity)
-                .filter(movie -> movie.getRoomName().length() > 0)
+                .filter(movie -> movie.getName().length() > 0)
                 .orElseThrow(()-> {throw new ValidatorException("Room name must contain at least one character");});
 
         Optional.of(entity)

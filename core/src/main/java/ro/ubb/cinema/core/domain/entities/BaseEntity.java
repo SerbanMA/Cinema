@@ -13,7 +13,6 @@ import java.io.Serializable;
 /**
  * Class for the BaseEntity
  *
- * @author fiamardar
  */
 
 @MappedSuperclass
@@ -22,7 +21,6 @@ import java.io.Serializable;
 @Data
 public class BaseEntity<ID extends Serializable> implements Serializable {
     @Id
-    @Column(name="identifier")
     @GeneratedValue
     private ID id;
 }

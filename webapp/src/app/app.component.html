@@ -1,0 +1,49 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="false">
+    <mat-toolbar color="primary">
+
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+      </button>
+      <span> Menu </span>
+
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="" routerLinkActive="active"> <mat-icon aria-hidden="false">home</mat-icon> Home </a>
+      <a mat-list-item routerLink="/cinemas" routerLinkActive="active"> <mat-icon aria-hidden="false">theaters</mat-icon> Cinemas</a>
+      <a mat-list-item routerLink="/cinemas" routerLinkActive="active"> <mat-icon aria-hidden="false">cinema</mat-icon> Clients</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="primary-toolbar">
+
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+      </button>
+      <span> {{title}} </span>
+
+    </mat-toolbar>
+
+    <!-- The real page that I want to see-->
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+

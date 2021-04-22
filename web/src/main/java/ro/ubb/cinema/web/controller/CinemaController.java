@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import ro.ubb.cinema.core.service.CinemaService;
 
 import ro.ubb.cinema.web.dto.CinemaDto;
-import ro.ubb.cinema.web.dto.CinemasDto;
 import ro.ubb.cinema.web.converter.CinemaConverter;
+
+import java.util.List;
 
 @RestController
 public class CinemaController {
@@ -22,13 +23,12 @@ public class CinemaController {
     private CinemaConverter cinemaConverter;
 
     @RequestMapping(value = "/cinemas")
-    CinemasDto getAllCinemas() {
+    List<CinemaDto> getAllCinemas() {
 
         log.trace("getAllCinemas - method entered");
 
-        CinemasDto cinemasDto = new CinemasDto(
-                cinemaConverter.convertModelsToDtos(
-                        cinemaService.getAllCinemas()));
+        List<CinemaDto> cinemasDto = cinemaConverter.convertModelsToDtos(
+                    cinemaService.getAllCinemas());
 
         log.trace("getAllCinemas - method finished: cinemasDto={}", cinemasDto);
 
@@ -73,12 +73,11 @@ public class CinemaController {
     }
 
     @RequestMapping(value = "/cinemas/filterByName", method = RequestMethod.POST)
-    CinemasDto filterCinemaByName(@RequestBody String name) {
+    List<CinemaDto> filterCinemaByName(@RequestBody String name) {
         log.trace("filterCinemaByName - method entered: name={}", name);
 
-        CinemasDto cinemasDto = new CinemasDto(
-                cinemaConverter.convertModelsToDtos(
-                        cinemaService.filterCinemaByName(name)));
+        List<CinemaDto> cinemasDto = cinemaConverter.convertModelsToDtos(
+                        cinemaService.filterCinemaByName(name));
 
         log.trace("filterByName - method finished");
         return cinemasDto;

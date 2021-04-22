@@ -47,7 +47,7 @@ public class RoomServiceImpl implements RoomService {
         log.trace("updateRoom - method entered: room={}", room);
         roomValidator.validate(room);
         Room updateRoom = repository.findById(room.getId()).orElseThrow();
-        updateRoom.setRoomName(room.getRoomName());
+        updateRoom.setName(room.getName());
         updateRoom.setCinema(room.getCinema());
         updateRoom.setNumberOfSeats(room.getNumberOfSeats());
         updateRoom.setFloorNumber(room.getFloorNumber());
@@ -68,88 +68,13 @@ public class RoomServiceImpl implements RoomService {
 
 
     @Override
-    public List<Room> filterRoomByNoOfSeats(Integer noToCompareWith) //>= than given number
+    public List<Room> filterRoomByNoOfSeats(Integer noToCompare) //>= than given number
     {
-        log.trace("filterRoomByNoOfSeats - method entered: noToCompareWith={}", noToCompareWith);
+        log.trace("filterRoomByNoOfSeats - method entered: noToCompareWith={}", noToCompare);
 
-        List<Room> filteredRooms = repository.getAllByNumberOfSeatsGreaterThanEqual(noToCompareWith);
+        List<Room> filteredRooms = repository.getAllByNumberOfSeatsGreaterThanEqual(noToCompare);
 
         log.trace("filterRoomByNoOfSeats - method finished: filteredRooms={}", filteredRooms);
         return filteredRooms;
     }
-
-//    @Override
-//    public void deleteRoomWithNoOfSeatsSmallerThanGiven(Integer noToCompareWith)
-//    {
-//        log.trace("deleteRoomWithNoOfSeatsSmallerThanGiven - method entered: noToCompareWith={}", noToCompareWith);
-//        Iterable<Room> rooms = repository.findAll();
-//
-//        Set<Room> filteredRooms = new HashSet<>();
-//        rooms.forEach(filteredRooms::add);
-//        filteredRooms.removeIf(room -> room.getNumberOfSeats() >= noToCompareWith);
-//        filteredRooms.forEach(room -> repository.deleteById(room.getId()));
-//
-//        log.trace("deleteRoomWithNoOfSeatsSmallerThanGiven - method finished");
-//    }
-//
-//
-//    @Override
-//    public Set<Room> getRoomsWithLowestFloorNumberAndHighestNumberOfSeats()
-//    {
-//        log.trace("getRoomsWithLowestFloorNumberAndHighestNumberOfSeats - method entered");
-//        Iterable<Room> allOfTheRooms = repository.findAll();
-//        Set<Room> rooms = new HashSet<>();
-//
-//        allOfTheRooms.forEach(rooms::add);
-//
-//        int minimumFloorNumber = rooms.stream().mapToInt(Room::getFloorNumber)
-//                .min().orElseThrow(RuntimeException::new);
-//        int maximumNumberOfSeats = rooms.stream().mapToInt(Room::getNumberOfSeats)
-//                .max().orElseThrow(RuntimeException::new);
-//
-//        rooms.removeIf(room -> !room.getFloorNumber().equals(minimumFloorNumber));
-//        rooms.removeIf(room -> !room.getNumberOfSeats().equals(maximumNumberOfSeats));
-//
-//        log.trace("getRoomsWithLowestFloorNumberAndHighestNumberOfSeats - method finished: rooms={}",rooms);
-//
-//        return rooms;
-//    }
-//
-//    @Override
-//    public Boolean containsOne(Long identifier)
-//    {
-//        log.trace("containsOne - method entered");
-//
-//        Boolean result = this.repository.findById(identifier).isPresent();
-//
-//        log.trace("containsOne - method finished: result={}", result);
-//
-//        return result;    }
-//
-//    @Override
-//    public Room get(Long identifier){
-//        log.trace("get - method entered: identifier={}", identifier);
-//
-//        Optional<Room> room = this.repository.findById(identifier);
-//        if (room.isPresent())
-//        {
-//            log.trace("get - method finished");
-//            return room.get();
-//        }
-//        else
-//        {
-//            log.trace("get - exception found");
-//            throw new ArrayIndexOutOfBoundsException("Room not found");
-//        }
-//    }
-//
-//    private void getCinema(Room room) {
-//        log.trace("getCinema - method entered: room={}", room);
-//        Optional<Cinema> cinema = this.cinemaRepository.findById(room.getCinema().getId());
-//        if (cinema.isPresent())
-//            room.setCinema(cinema.get());
-//        else
-//            throw new ServiceValidatorException("Cinema ID does not exists.");
-//        log.trace("getCinema - method finished");
-//    }
 }

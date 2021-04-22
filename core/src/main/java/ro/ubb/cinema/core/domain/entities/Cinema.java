@@ -4,28 +4,20 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  * Class for the Cinema entity
  *
- * @author razvan-kokovics
  */
 
-@Entity(name = "Cinema")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-@Table(name = "cinema")
+@Builder
 public class Cinema extends BaseEntity<Long> {
-    @Column(name="name")
     private String name;
-    @Column(name="address")
     private String address;
-
-    public Cinema(Long cinemaId) {
-        super(cinemaId);
-    }
 }

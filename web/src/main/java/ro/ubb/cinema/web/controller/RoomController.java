@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ro.ubb.cinema.web.converter.RoomConverter;
 import ro.ubb.cinema.web.dto.RoomDto;
 import ro.ubb.cinema.core.service.RoomService;
-import ro.ubb.cinema.web.dto.RoomsDto;
+
+import java.util.List;
 
 @RestController
 public class RoomController {
@@ -22,12 +23,11 @@ public class RoomController {
     private RoomConverter roomConverter;
 
     @RequestMapping(value = "/rooms")
-    RoomsDto getAllRooms() {
+    List<RoomDto> getAllRooms() {
         log.trace("getAllRooms - method entered");
 
-        RoomsDto roomsDto = new RoomsDto(
-                roomConverter.convertModelsToDtos(
-                        roomService.getAllRooms()));
+        List<RoomDto> roomsDto = roomConverter.convertModelsToDtos(
+                        roomService.getAllRooms());
 
         log.trace("getAllRooms - method finished: roomsDto={}", roomsDto);
 
@@ -70,12 +70,11 @@ public class RoomController {
     }
 
     @RequestMapping(value = "/rooms/filterByNumberOfSeats", method = RequestMethod.POST)
-    RoomsDto filterRoomByNumberOfSeats(@RequestBody Integer numberOfSeatsToCompareWith) {
+    List<RoomDto> filterRoomByNumberOfSeats(@RequestBody Integer numberOfSeatsToCompareWith) {
         log.trace("filterRoomByNumberOfSeats - method entered: numberOfSeatsToCompareWith={}", numberOfSeatsToCompareWith);
 
-        RoomsDto roomsDto = new RoomsDto(
-                roomConverter.convertModelsToDtos(
-                        roomService.filterRoomByNoOfSeats(numberOfSeatsToCompareWith)));
+        List<RoomDto> roomsDto = roomConverter.convertModelsToDtos(
+                        roomService.filterRoomByNoOfSeats(numberOfSeatsToCompareWith));
 
         log.trace("filterRoomByNumberOfSeats - method finished");
         return roomsDto;
