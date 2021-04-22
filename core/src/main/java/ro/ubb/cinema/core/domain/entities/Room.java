@@ -2,33 +2,29 @@ package ro.ubb.cinema.core.domain.entities;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
- * @author fivia.
+ * Class for the Room entity
  *
  */
 
-@Entity(name = "Room")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-@Table(name = "room")
+@Builder
 public class Room extends BaseEntity<Long>{
-    @Column(name = "floorNumber")
     private Integer floorNumber;
-    @Column(name = "name")
-    private String roomName;
-    @Column(name = "numberOfSeats")
+    private String name;
     private Integer numberOfSeats;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="cinemaId")
     private Cinema cinema;
 
-    public Room(Long roomId) {
-        super(roomId);
-    }
 }

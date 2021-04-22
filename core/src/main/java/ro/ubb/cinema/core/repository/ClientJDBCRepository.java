@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ClientJDBCRepository extends Repository<Long, Client> {
 
-    List<Client> getAllByClientLastName(String name);
+    List<Client> getAllByLastName(String name);
 }

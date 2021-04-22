@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ro.ubb.cinema.web.converter.TicketConverter;
 import ro.ubb.cinema.web.dto.TicketDto;
 import ro.ubb.cinema.core.service.TicketService;
-import ro.ubb.cinema.web.dto.TicketsDto;
+
+import java.util.List;
 
 @RestController
 public class TicketController {
@@ -22,12 +23,11 @@ public class TicketController {
     private TicketConverter ticketConverter;
 
     @RequestMapping(value = "/tickets")
-    TicketsDto getAllTickets() {
+    List<TicketDto> getAllTickets() {
         log.trace("getAllTickets - method entered");
 
-        TicketsDto ticketsDto = new TicketsDto(
-                ticketConverter.convertModelsToDtos(
-                        ticketService.getAllTickets()));
+        List<TicketDto> ticketsDto = ticketConverter.convertModelsToDtos(
+                        ticketService.getAllTickets());
 
         log.trace("getAllTickets - method finished: ticketsDto={}", ticketsDto);
         return ticketsDto;
@@ -69,12 +69,11 @@ public class TicketController {
     }
 
     @RequestMapping(value = "/tickets/filterByPrice", method = RequestMethod.POST)
-    TicketsDto filterTicketByPrice(@RequestBody Double numberToCompareWith) {
+    List<TicketDto> filterTicketByPrice(@RequestBody Double numberToCompareWith) {
         log.trace("filterByPrice - method entered: numberToCompareWith={}", numberToCompareWith);
 
-        TicketsDto ticketsDto = new TicketsDto(
-                ticketConverter.convertModelsToDtos(
-                        ticketService.filterTicketsByPrice(numberToCompareWith)));
+        List<TicketDto> ticketsDto = ticketConverter.convertModelsToDtos(
+                        ticketService.filterTicketsByPrice(numberToCompareWith));
 
         log.trace("filterByPrice - method finished");
         return ticketsDto;

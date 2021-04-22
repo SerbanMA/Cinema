@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ro.ubb.cinema.web.converter.MovieConverter;
 import ro.ubb.cinema.core.service.MovieService;
 import ro.ubb.cinema.web.dto.MovieDto;
-import ro.ubb.cinema.web.dto.MoviesDto;
+
+import java.util.List;
 
 @RestController
 public class MovieController {
@@ -22,12 +23,11 @@ public class MovieController {
     private MovieConverter movieConverter;
 
     @RequestMapping(value = "/movies")
-    MoviesDto getAllMovies() {
+    List<MovieDto> getAllMovies() {
         log.trace("getAllMovies - method entered");
 
-        MoviesDto moviesDto = new MoviesDto(
-                movieConverter.convertModelsToDtos(
-                        movieService.getAllMovies()));
+        List<MovieDto> moviesDto = movieConverter.convertModelsToDtos(
+                        movieService.getAllMovies());
 
         log.trace("getAllMovies - method finished: moviesDto={}", moviesDto);
 
@@ -71,23 +71,21 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/movies/filterByName", method = RequestMethod.POST)
-    MoviesDto filterMovieByName(@RequestBody String name) {
+    List<MovieDto> filterMovieByName(@RequestBody String name) {
         log.trace("filterMovieByName - method entered: name={}", name);
 
-        MoviesDto moviesDto = new MoviesDto(
-                movieConverter.convertModelsToDtos(
-                        movieService.filterMoviesByName(name)));
+        List<MovieDto> moviesDto = movieConverter.convertModelsToDtos(
+                        movieService.filterMoviesByName(name));
 
         log.trace("filterByName - method finished");
         return moviesDto;
     }
     @RequestMapping(value = "/movies/filterByGenre", method = RequestMethod.POST)
-    MoviesDto filterMovieByGenre(@RequestBody String genre) {
+    List<MovieDto> filterMovieByGenre(@RequestBody String genre) {
         log.trace("filterMovieByName - method entered: genre={}", genre);
 
-        MoviesDto moviesDto = new MoviesDto(
-                movieConverter.convertModelsToDtos(
-                        movieService.filterMoviesByGenre(genre)));
+        List<MovieDto> moviesDto = movieConverter.convertModelsToDtos(
+                        movieService.filterMoviesByGenre(genre));
 
         log.trace("filterMovieByName - method finished");
         return moviesDto;

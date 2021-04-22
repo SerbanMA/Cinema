@@ -79,61 +79,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> filterMoviesByGenre(String genre) {
-        log.trace("filterMoviesByGenre - method entered: genre={}", genre);
+    public List<Movie> filterMoviesByGenre(String genreToFilter) {
+        log.trace("filterMoviesByGenre - method entered: genre={}", genreToFilter);
 
-        List<Movie> filteredMovies = repository.getAllByGenreContaining(genre);
+        List<Movie> filteredMovies = repository.getAllByGenreContaining(genreToFilter);
 
         log.trace("filterMoviesByGenre - method finished: filteredMovies={}", filteredMovies);
 
         return filteredMovies;
     }
-//
-//    @Override
-//    public Set<Movie> getLongestMovies() {
-//        log.trace("filterMoviesByName - method entered");
-//
-//        Iterable<Movie> allMovies = repository.findAll();
-//
-//        Set<Movie> movies = new HashSet<>();
-//        allMovies.forEach(movies::add);
-//
-//        int maxDuration = movies.stream().mapToInt(Movie::getDuration)
-//                .max().orElseThrow(RuntimeException::new);
-//
-//        movies.removeIf(movie -> !movie.getDuration().equals(maxDuration));
-//
-//        log.trace("filterMoviesByName - method finished: longestMovies={}", movies);
-//
-//        return movies;
-//    }
-//
-//    @Override
-//    public Boolean containsOne(Long identifier)
-//    {
-//        log.trace("containsOne - method entered");
-//
-//        Boolean result = this.repository.findById(identifier).isPresent();
-//
-//        log.trace("containsOne - method finished: result={}", result);
-//
-//        return result;
-//    }
-//
-//    @Override
-//    public Movie get(Long identifier){
-//        log.trace("get - method entered: identifier={}", identifier);
-//
-//        Optional<Movie> movie = this.repository.findById(identifier);
-//        if (movie.isPresent())
-//        {
-//            log.trace("get - method finished");
-//            return movie.get();
-//        }
-//        else
-//        {
-//            log.trace("get - exception found");
-//            throw new ArrayIndexOutOfBoundsException("Movie not found");
-//        }
-//    }
 }

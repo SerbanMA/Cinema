@@ -67,10 +67,10 @@ public class CinemaServiceImpl implements CinemaService {
     }
 
     @Override
-    public List<Cinema> filterCinemaByName(String string) {
-        log.trace("filterCinemaByName - method entered: string={}", string);
+    public List<Cinema> filterCinemaByName(String nameToFilter) {
+        log.trace("filterCinemaByName - method entered: string={}", nameToFilter);
 
-        List<Cinema> filteredCinemas = repository.getAllByNameContaining(string);
+        List<Cinema> filteredCinemas = repository.getAllByNameContaining(nameToFilter);
 
         log.trace("filterCinemaByName - method finished: filteredCinemas={}", filteredCinemas);
 

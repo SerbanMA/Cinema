@@ -73,100 +73,12 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<Ticket> filterTicketsByPrice(Double price) {
-        log.trace("filterTicketsByPrice - method entered: price={}", price);
+    public List<Ticket> filterTicketsByPrice(Double priceToCompare) {
+        log.trace("filterTicketsByPrice - method entered: price={}", priceToCompare);
 
-        List<Ticket> filteredTickets = repository.getAllByPriceLessThanEqual(price);
+        List<Ticket> filteredTickets = repository.getAllByPriceLessThanEqual(priceToCompare);
 
         log.trace("filterTicketsByPrice - method finished: filteredTickets={}", filteredTickets);
         return filteredTickets;
     }
-//
-//    @Override
-//    public void deleteTicketsByDate(LocalDate date){
-//        log.trace("deleteTicketsByDate - method entered: date={}", date);
-//        Iterable<Ticket> tickets = repository.findAll();
-//
-//        Set<Ticket> filteredTickets = new HashSet<>();
-//        tickets.forEach(filteredTickets::add);
-//        filteredTickets.removeIf(ticket -> (!ticket.getDate().equals(date)));
-//
-//        filteredTickets.forEach(ticket -> repository.deleteById(ticket.getId()));
-//        log.trace("deleteTicketsByDate - method finished");
-//    }
-//
-//    @Override
-//    public Boolean containsOne(Long identifier)
-//    {
-//        log.trace("containsOne - method entered");
-//
-//        Boolean result = this.repository.findById(identifier).isPresent();
-//
-//        log.trace("containsOne - method finished: result={}", result);
-//
-//        return result;
-//    }
-//
-//    @Override
-//    public Ticket get(Long identifier){
-//        log.trace("get - method entered: identifier={}", identifier);
-//
-//        Optional<Ticket> ticket = this.repository.findById(identifier);
-//        if (ticket.isPresent())
-//        {
-//            log.trace("get - method finished");
-//            return ticket.get();
-//        }
-//        else
-//        {
-//            log.trace("get - exception found");
-//            throw new ArrayIndexOutOfBoundsException("Ticket not found");
-//        }
-//    }
-//
-//    private void getRoom(Ticket ticket) {
-//        log.trace("getRoom - method entered: ticket={}", ticket);
-//        Optional<Room> room = this.roomRepository.findById(ticket.getRoom().getId());
-//        if (room.isPresent())
-//            ticket.setRoom(room.get());
-//        else
-//            throw new ServiceValidatorException("Room ID does not exists.");
-//        log.trace("getRoom - method finished");
-//    }
-//
-//    private void getClient(Ticket ticket) {
-//        log.trace("getClient - method entered: ticket={}", ticket);
-//
-//        Optional<Client> client = this.clientRepository.findById(ticket.getClient().getId());
-//        if (client.isPresent())
-//            ticket.setClient(client.get());
-//        else
-//            throw new ServiceValidatorException("Client ID does not exists.");
-//        log.trace("getClient - method finished");
-//    }
-//
-//    private void getMovie(Ticket ticket) {
-//        log.trace("getMovie - method entered: ticket={}", ticket);
-//
-//        Optional<Movie> movie = this.movieRepository.findById(ticket.getMovie().getId());
-//        if (movie.isPresent())
-//            ticket.setMovie(movie.get());
-//        else
-//            throw new ServiceValidatorException("Movie ID does not exists.");
-//        log.trace("getMovie - method finished");
-//    }
-//
-//    private void getAllTicketRelations(Ticket ticket){
-//        log.trace("getAllTicketRelations - method entered");
-//        getRoom(ticket);
-//        getClient(ticket);
-//        getMovie(ticket);
-//        log.trace("getAllTicketRelations - method finished");
-//    }
-//
-//    @Override
-//    public Repository<Long, Ticket> getRepository() {
-//        log.trace("getRepository - method entered and finished");
-//        return repository;
-//    }
 }

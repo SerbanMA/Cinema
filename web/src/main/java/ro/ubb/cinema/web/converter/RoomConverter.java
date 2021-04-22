@@ -12,14 +12,14 @@ public class RoomConverter extends BaseConverter<Room, RoomDto>{
         model.setId(dto.getId());
         model.setFloorNumber(dto.getFloorNumber());
         model.setNumberOfSeats(dto.getNumberOfSeats());
-        model.setRoomName(dto.getName());
+        model.setName(dto.getName());
         model.setCinema(dto.getCinema());
         return model;
     }
 
     @Override
     public RoomDto convertModelToDto(Room room) {
-        RoomDto dto = new RoomDto(room.getFloorNumber(), room.getRoomName(), room.getNumberOfSeats(), room.getCinema());
+        RoomDto dto = new RoomDto(room.getFloorNumber(), room.getName(), room.getNumberOfSeats(), room.getCinema());
         dto.setId(room.getId());
         return dto;
     }

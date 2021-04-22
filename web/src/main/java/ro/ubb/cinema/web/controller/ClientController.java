@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ro.ubb.cinema.core.service.ClientService;
 import ro.ubb.cinema.web.converter.ClientConverter;
 import ro.ubb.cinema.web.dto.ClientDto;
-import ro.ubb.cinema.web.dto.ClientsDto;
+
+import java.util.List;
 
 @RestController
 public class ClientController {
@@ -22,12 +23,11 @@ public class ClientController {
     private ClientConverter clientConverter;
 
     @RequestMapping(value = "/clients")
-    ClientsDto getAllClients() {
+    List<ClientDto> getAllClients() {
         log.trace("getAllClients - method entered");
 
-        ClientsDto clientsDto = new ClientsDto(
-                clientConverter.convertModelsToDtos(
-                        clientService.getAllClients()));
+        List<ClientDto> clientsDto = clientConverter.convertModelsToDtos(
+                        clientService.getAllClients());
 
         log.trace("getAllClients - method finished: clientsDto={}", clientsDto);
 
@@ -71,12 +71,11 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/clients/filterByLastName", method = RequestMethod.POST)
-    ClientsDto filterCinemaByName(@RequestBody String name) {
+    List<ClientDto> filterCinemaByName(@RequestBody String name) {
         log.trace("filterClientByLastName - method entered: name={}", name);
 
-        ClientsDto clientsDto = new ClientsDto(
-                clientConverter.convertModelsToDtos(
-                        clientService.filterClientsByLastName(name)));
+        List<ClientDto> clientsDto = clientConverter.convertModelsToDtos(
+                        clientService.filterClientsByLastName(name));
 
         log.trace("filterByLastName - method finished");
         return clientsDto;

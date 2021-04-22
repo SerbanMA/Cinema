@@ -1,0 +1,4 @@
+white->         #C5C6C7
+turquoise->     #66FCF1
+turquoise-ish-> #45A29E
+black-ish->     #1F2233
