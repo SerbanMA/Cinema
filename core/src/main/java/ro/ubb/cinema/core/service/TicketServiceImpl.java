@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ro.ubb.cinema.core.domain.entities.Movie;
 import ro.ubb.cinema.core.domain.entities.Ticket;
 import ro.ubb.cinema.core.domain.validators.TicketValidator;
 import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
@@ -13,6 +14,7 @@ import ro.ubb.cinema.core.repository.RoomJDBCRepository;
 import ro.ubb.cinema.core.repository.TicketJDBCRepository;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -33,7 +35,7 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public Ticket saveTicket(Ticket ticket) throws ValidatorException {
         log.trace("addTicket - method entered: ticket={}", ticket);
-        ticketValidator.validate(ticket);
+//        ticketValidator.validate(ticket);
         Ticket returnedTicket = repository.save(ticket);
         log.trace("addTicket - method finished");
         return returnedTicket;
@@ -50,7 +52,7 @@ public class TicketServiceImpl implements TicketService {
     @Transactional
     public Ticket updateTicket(Ticket ticket) throws ValidatorException {
         log.trace("updateTicket - method entered: ticket={}", ticket);
-        ticketValidator.validate(ticket);
+//        ticketValidator.validate(ticket);
         Ticket updateTicket = repository.findById(ticket.getId()).orElseThrow();
         updateTicket.setRoom(ticket.getRoom());
         updateTicket.setClient(ticket.getClient());
@@ -66,7 +68,9 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public List<Ticket> getAllTickets() {
         log.trace("getAllTickets - method entered");
+
         List<Ticket> tickets = repository.findAll();
+        tickets.sort(Comparator.comparing(Ticket::getId));
 
         log.trace("getAllTickets - method finished: tickets={}", tickets);
         return tickets;

@@ -1,0 +1,43 @@
+<body>
+
+<mat-card class="card">
+
+  <button class="back-button"> <a href="/cinemas"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+
+  <mat-card-header>
+    <mat-card-title>Cinema</mat-card-title>
+    <mat-card-subtitle>- update -</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <form>
+      <mat-form-field appearance="standard">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="Name" [value]="cinema.name" #name/>
+        <mat-hint>cinema name</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Address</mat-label>
+        <input matInput type="text" autocomplete="off"  placeholder="Address" [value]="cinema.address" #address/>
+        <mat-hint>cinema address</mat-hint>
+      </mat-form-field>
+
+      <mat-action-list>
+        <mat-card-actions align="end">
+          <button mat-button (click)="updateCinema(name.value, address.value)"> <mat-icon aria-hidden="false">send</mat-icon> </button>
+        </mat-card-actions>
+      </mat-action-list>
+
+    </form>
+
+  </mat-card-content>
+</mat-card>
+
+</body>
+
+
+
+
+
+

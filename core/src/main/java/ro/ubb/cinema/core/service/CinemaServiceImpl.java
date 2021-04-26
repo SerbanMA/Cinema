@@ -10,6 +10,7 @@ import ro.ubb.cinema.core.domain.validators.CinemaValidator;
 import ro.ubb.cinema.core.repository.CinemaJDBCRepository;
 import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class CinemaServiceImpl implements CinemaService {
     @Override
     public Cinema saveCinema(Cinema cinema) throws ValidatorException{
         log.trace("saveCinema - method entered: cinema={}", cinema);
-        cinemaValidator.validate(cinema);
+//        cinemaValidator.validate(cinema);
         Cinema returnedCinema = repository.save(cinema);
         log.trace("saveCinema - method finished");
         return returnedCinema;
@@ -47,7 +48,7 @@ public class CinemaServiceImpl implements CinemaService {
     @Transactional
     public Cinema updateCinema(Cinema cinema) {
         log.trace("updateCinema - method entered: cinema={}", cinema);
-        cinemaValidator.validate(cinema);
+//        cinemaValidator.validate(cinema);
         Cinema updateCinema = repository.findById(cinema.getId()).orElseThrow();
         updateCinema.setName(cinema.getName());
         updateCinema.setAddress(cinema.getAddress());
@@ -60,6 +61,7 @@ public class CinemaServiceImpl implements CinemaService {
         log.trace("getAllCinemas - method entered");
 
         List<Cinema> cinemas = repository.findAll();
+        cinemas.sort(Comparator.comparing(Cinema::getId));
 
         log.trace("getAllCinemas - method finished: cinemas={}", cinemas);
 
@@ -71,6 +73,17 @@ public class CinemaServiceImpl implements CinemaService {
         log.trace("filterCinemaByName - method entered: string={}", nameToFilter);
 
         List<Cinema> filteredCinemas = repository.getAllByNameContaining(nameToFilter);
+
+        log.trace("filterCinemaByName - method finished: filteredCinemas={}", filteredCinemas);
+
+        return filteredCinemas;
+    }
+
+    @Override
+    public List<Cinema> filterCinemaByAllFields(String string) {
+        log.trace("filterCinemaByName - method entered: string={}", string);
+
+        List<Cinema> filteredCinemas = repository.getAllByNameContainingIgnoreCaseOrAddressContainingIgnoreCase(string, string);
 
         log.trace("filterCinemaByName - method finished: filteredCinemas={}", filteredCinemas);
 

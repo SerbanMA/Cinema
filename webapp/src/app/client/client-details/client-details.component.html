@@ -1,0 +1,20 @@
+<body>
+
+<div >
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Client</mat-card-title>
+      <mat-card-subtitle>ID: {{client ? client.id: ""}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">First Name: {{client ? client.firstName : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Last Name: {{client ? client.lastName : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Email: {{client ? client.email : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Age: {{client ? client.age : ""}}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+</body>

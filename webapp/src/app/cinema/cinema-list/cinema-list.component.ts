@@ -1,8 +1,10 @@
-import {ViewChild, Component, OnInit, AfterViewInit} from '@angular/core';
+import {ViewChild, Component, OnInit} from '@angular/core';
 import {Cinema} from "../shared/cinema.model";
 import {CinemaService} from "../shared/cinema.service";
-import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {FormControl} from "@angular/forms";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-cinema-list',
@@ -11,33 +13,58 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class CinemaListComponent implements OnInit{
 
-  cinemas : Cinema[];
-  cinemasSlice : Cinema[]
-
   selectedCinema : Cinema = new Cinema();
 
-  constructor(private cinemaService : CinemaService) {
-  }
+  formSearch = new FormControl();
+
+  dataSource = new MatTableDataSource();
+  @ViewChild(MatPaginator) paginator : MatPaginator;
+
+  constructor(private cinemaService : CinemaService) {}
 
   ngOnInit(): void {
     this.cinemaService.getCinemas()
-      .subscribe(cinemas => {this.cinemas = cinemas; this.cinemasSlice = this.cinemas.slice(0, 5);});
+      .subscribe(cinemas => {
+        this.dataSource.data = cinemas;
+        this.dataSource.paginator = this.paginator;
+      });
+
+    setTimeout(() => {
+      this.formSearch.valueChanges.subscribe(search => {
+        if (search != '') {
+          this.cinemaService.getFilteredCinemas(search)
+            .subscribe(cinemas => {this.dataSource.data = cinemas; console.log(cinemas)});
+        }
+        else
+        {
+          this.cinemaService.getCinemas()
+            .subscribe(cinemas => {this.dataSource.data = cinemas; console.log(cinemas)});
+        }
+      });
+    })
   }
 
   onSelected(cinema : Cinema) : void {
     this.selectedCinema = cinema;
-    console.log(cinema)
   }
 
-  onPageChange(event : PageEvent) {
-    const startIndex = event.pageIndex * event.pageSize
-    let endIndex = startIndex + event.pageSize;
-    if (endIndex > this.cinemas.length){
-      endIndex = this.cinemas.length
+  sortData(sort: Sort) {
+    const data = this.dataSource.data.slice();
+    if (!sort.active || sort.direction === '') {
+      return;
     }
-    this.cinemasSlice=this.cinemas.slice(startIndex, endIndex)
+
+    switch (sort.active) {
+      case 'name':
+        this.cinemaService.getSortedFilteredCinemasByName(sort.direction)
+          .subscribe(cinemas => {
+            this.dataSource.data = cinemas;
+            console.log(cinemas)
+          });
+        return;
+      default:
+        return;
+    }
+
   }
-
-
-
 }
