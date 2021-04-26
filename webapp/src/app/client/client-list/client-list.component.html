@@ -1,0 +1,53 @@
+<body>
+
+<div class="search">
+  <form class="form">
+    <mat-form-field appearance="outline" class="form-search">
+      <input matInput type="text" autocomplete="off" placeholder="Search" [formControl]="formSearch"/>
+      <mat-icon matPrefix aria-hidden="false">search</mat-icon>
+    </mat-form-field>
+  </form>
+</div>
+
+
+<div class="mat-elevation-z8 container">
+  <div class="table-container">
+    <table mat-table matSort [dataSource]="dataSource" class="table" >
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="id"> <button class="add-button"> <a routerLink="/clients-add"> <mat-icon aria-hidden="false">add</mat-icon> </a> </button> </th>
+        <td mat-cell *matCellDef="let client"> </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Name </th>
+        <td mat-cell *matCellDef="let client"> {{client.firstName}} {{client.lastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> eMail </th>
+        <td mat-cell *matCellDef="let client"> {{client.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef class="actions"> Actions </th>
+        <td mat-cell *matCellDef="let client"  style="display: flex">
+          <button class="update-button"> <a routerLink="/clients-update" [state]="client"> <mat-icon aria-hidden="false">edit</mat-icon> </a> </button>
+          <button class="delete-button"> <a routerLink="/clients-delete" [state]="client"> <mat-icon aria-hidden="false">delete</mat-icon> </a> </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id', 'firstName', 'email', 'update']"></tr>
+      <tr mat-row *matRowDef="let client; columns: ['id', 'firstName', 'email', 'update'];" (click)="onSelected(client)"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5,10,20]"
+                   showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+
+<app-client-details [client]="selectedClient"></app-client-details>
+
+</body>

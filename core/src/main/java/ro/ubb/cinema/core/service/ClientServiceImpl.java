@@ -10,6 +10,7 @@ import ro.ubb.cinema.core.domain.validators.ClientValidator;
 import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client saveClient(Client client) throws ValidatorException {
         log.trace("addClient - method entered: client={}", client);
-        clientValidator.validate(client);
+//        clientValidator.validate(client);
         Client returnedClient = repository.save(client);
         log.trace("addClient - method finished");
         return returnedClient;
@@ -48,7 +49,7 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public Client updateClient(Client client) {
         log.trace("updateClient - method entered: client={}", client);
-        clientValidator.validate(client);
+//        clientValidator.validate(client);
         Client updateClient = repository.findById(client.getId()).orElseThrow();
         updateClient.setFirstName(client.getFirstName());
         updateClient.setLastName(client.getLastName());
@@ -64,6 +65,7 @@ public class ClientServiceImpl implements ClientService {
         log.trace("getAllClients - method entered");
 
         List<Client> clients = repository.findAll();
+        clients.sort(Comparator.comparing(Client::getId));
 
         log.trace("getAllClients - method finished: clients={}", clients);
 

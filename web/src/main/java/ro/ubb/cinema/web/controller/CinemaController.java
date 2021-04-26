@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ro.ubb.cinema.core.domain.entities.Cinema;
 import ro.ubb.cinema.core.service.CinemaService;
 
 import ro.ubb.cinema.web.dto.CinemaDto;
 import ro.ubb.cinema.web.converter.CinemaConverter;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -80,6 +84,33 @@ public class CinemaController {
                         cinemaService.filterCinemaByName(name));
 
         log.trace("filterByName - method finished");
+        return cinemasDto;
+    }
+
+    @RequestMapping(value = "/cinemas/filter", method = RequestMethod.POST)
+    List<CinemaDto> filter(@RequestBody String name) {
+        log.trace("filter - method entered: name={}", name);
+
+        List<CinemaDto> cinemasDto = cinemaConverter.convertModelsToDtos(
+                cinemaService.filterCinemaByAllFields(name));
+
+        log.trace("filter - method finished");
+        return cinemasDto;
+    }
+
+    @RequestMapping(value = "/cinemas/sort", method = RequestMethod.POST)
+    List<CinemaDto> sort(@RequestBody String isAsc) {
+        log.trace("sort - method entered: isAsc={}", isAsc);
+
+
+        List<CinemaDto> cinemasDto = cinemaConverter.convertModelsToDtos(
+                cinemaService.getAllCinemas());
+        cinemasDto.sort(Comparator.comparing(CinemaDto::getName));
+
+        if (isAsc.equals("desc"))
+            Collections.reverse(cinemasDto);
+
+        log.trace("sort - method finished");
         return cinemasDto;
     }
 }

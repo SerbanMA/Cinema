@@ -1,0 +1,36 @@
+<body>
+
+<div>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Room</mat-card-title>
+      <mat-card-subtitle>ID: {{room ? room.id : ""}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">Name: {{room ? room.name : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Floor Number: {{room ? room.floorNumber : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Number of Seats: {{room ? room.numberOfSeats : ""}}</mat-list-item>
+
+        <mat-card class="content">
+          <mat-card-header>
+            <mat-card-title>Cinema</mat-card-title>
+            <mat-card-subtitle>ID: {{room && room.cinema ? room.cinema.id : ""}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-list role="list">
+              <mat-list-item role="listitem">Name: {{room && room.cinema ? room.cinema.name : ""}}</mat-list-item>
+              <mat-list-item role="listitem">Address: {{room && room.cinema ? room.cinema.address : ""}}</mat-list-item>
+
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="space"></div>
+</div>
+
+</body>

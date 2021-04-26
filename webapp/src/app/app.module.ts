@@ -19,14 +19,52 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from "@angular/material/card";
 import { CinemaDetailsComponent } from './cinema/cinema-details/cinema-details.component';
+import { CinemaAddComponent } from './cinema/cinema-add/cinema-add.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import { RoomComponent } from './room/room.component';
+import { RoomListComponent } from './room/room-list/room-list.component';
+import { RoomDetailsComponent } from './room/room-details/room-details.component';
+import { RoomAddComponent } from './room/room-add/room-add.component';
+import {RoomService} from "./room/shared/room.service";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { CinemaUpdateComponent } from './cinema/cinema-update/cinema-update.component';
+import { CinemaDeleteComponent } from './cinema/cinema-delete/cinema-delete.component';
+import { ClientComponent } from './client/client.component';
+import { ClientListComponent } from './client/client-list/client-list.component';
+import { ClientAddComponent } from './client/client-add/client-add.component';
+import { ClientDeleteComponent } from './client/client-delete/client-delete.component';
+import { ClientUpdateComponent } from './client/client-update/client-update.component';
+import { ClientDetailsComponent } from './client/client-details/client-details.component';
+import {ClientService} from "./client/shared/client.service";
+import {MatSortModule} from "@angular/material/sort";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { RoomDeleteComponent } from './room/room-delete/room-delete.component';
+import { RoomUpdateComponent } from './room/room-update/room-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CinemaComponent,
     CinemaListComponent,
-    CinemaDetailsComponent
-
+    CinemaDetailsComponent,
+    CinemaAddComponent,
+    CinemaUpdateComponent,
+    CinemaDeleteComponent,
+    RoomComponent,
+    RoomListComponent,
+    RoomDetailsComponent,
+    RoomAddComponent,
+    ClientComponent,
+    ClientListComponent,
+    ClientAddComponent,
+    ClientDeleteComponent,
+    ClientUpdateComponent,
+    ClientDetailsComponent,
+    RoomDeleteComponent,
+    RoomUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,9 +80,18 @@ import { CinemaDetailsComponent } from './cinema/cinema-details/cinema-details.c
     MatFormFieldModule,
     MatPaginatorModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatSortModule,
+    MatSnackBarModule,
   ],
-  providers: [CinemaService],
+  providers: [CinemaService, ClientService, RoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

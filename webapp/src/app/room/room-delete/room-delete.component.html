@@ -1,0 +1,50 @@
+<body>
+
+<mat-card class="card">
+
+  <button class="back-button"> <a href="/rooms"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+
+  <mat-card-header>
+    <mat-card-title>Room</mat-card-title>
+    <mat-card-subtitle>- are you sure you want to delete -</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <p> </p>
+    <mat-list role="list">
+      <mat-list-item role="listitem">Name: {{room ? room.name : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Floor Number: {{room ? room.floorNumber : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Number of Seats: {{room ? room.numberOfSeats : ""}}</mat-list-item>
+
+      <mat-card class="content">
+        <mat-card-header>
+          <mat-card-title>Cinema</mat-card-title>
+          <mat-card-subtitle>ID: {{room && room.cinema ? room.cinema.id : ""}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Name: {{room && room.cinema ? room.cinema.name : ""}}</mat-list-item>
+            <mat-list-item role="listitem">Address: {{room && room.cinema ? room.cinema.address : ""}}</mat-list-item>
+
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-list>
+
+    <mat-action-list>
+      <mat-card-actions align="end">
+        <button mat-button (click)="deleteRoom()"> <mat-icon aria-hidden="false">send</mat-icon> </button>
+      </mat-card-actions>
+    </mat-action-list>
+
+
+  </mat-card-content>
+</mat-card>
+
+</body>
+
+
+
+
+
+

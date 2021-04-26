@@ -1,0 +1,35 @@
+<body>
+
+<mat-card class="card">
+
+  <button class="back-button"> <a href="/cinemas"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+
+  <mat-card-header>
+    <mat-card-title>Cinema</mat-card-title>
+    <mat-card-subtitle>- are you sure you want to delete -</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <p>Are you sure you want to delete cinema? </p>
+    <mat-list role="list">
+      <mat-list-item role="listitem">Name: {{cinema.name}}</mat-list-item>
+      <mat-list-item role="listitem">Address: {{cinema.address}}</mat-list-item>
+    </mat-list>
+
+    <mat-action-list>
+      <mat-card-actions align="end">
+        <button mat-button (click)="deleteCinema()"> <mat-icon aria-hidden="false">send</mat-icon> </button>
+      </mat-card-actions>
+    </mat-action-list>
+
+
+  </mat-card-content>
+</mat-card>
+
+</body>
+
+
+
+
+
+

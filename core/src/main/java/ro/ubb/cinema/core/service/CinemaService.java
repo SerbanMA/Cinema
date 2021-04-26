@@ -36,17 +36,12 @@ public interface CinemaService {
      * @return a Set of the filtered cinemas
      */
     List<Cinema> filterCinemaByName(String string);
-//
-//    void deleteCinemaByAddress(String string);
-//
-//    Boolean containsOne(Long identifier);
-//
-//    /**
-//     * Return the cinema that have the given identifier
-//     * @param identifier - long, the identifier of the cinema searched for
-//     * @return - cinema object
-//     * @throws ArrayIndexOutOfBoundsException
-//     *          if cinema not found
-//     */
-//    Cinema get(Long identifier) throws  ArrayIndexOutOfBoundsException;
+
+    /**
+     * Returns all cinemas whose fields contain a given string passed as a parameter
+     * @param string - the string which should be included in the fields
+     * @return a Set of the filtered cinemas
+     */
+    List<Cinema> filterCinemaByAllFields(String string);
+
 }

@@ -10,6 +10,7 @@ import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 import ro.ubb.cinema.core.repository.MovieJDBCRepository;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie saveMovie(Movie movie) throws ValidatorException {
         log.trace("addMovie - method entered: movie={}", movie);
-        movieValidator.validate(movie);
+//        movieValidator.validate(movie);
         Movie returnedMovie = repository.save(movie);
         log.trace("addMovie - method finished");
         return returnedMovie;
@@ -47,7 +48,7 @@ public class MovieServiceImpl implements MovieService {
     @Transactional
     public Movie updateMovie(Movie movie) {
         log.trace("updateMovie - method entered: movie={}", movie);
-        movieValidator.validate(movie);
+//        movieValidator.validate(movie);
         Movie updateMovie = repository.findById(movie.getId()).orElseThrow();
         updateMovie.setName(movie.getName());
         updateMovie.setGenre(movie.getGenre());
@@ -61,6 +62,7 @@ public class MovieServiceImpl implements MovieService {
         log.trace("getAllMovies - method entered");
 
         List<Movie> movies = repository.findAll();
+        movies.sort(Comparator.comparing(Movie::getId));
 
         log.trace("getAllMovies - method finished: movies={}", movies);
         return movies;
