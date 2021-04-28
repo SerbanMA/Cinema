@@ -1,0 +1,19 @@
+<body>
+
+<div >
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Movie</mat-card-title>
+      <mat-card-subtitle>ID: {{movie ? movie.id: ""}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">Name: {{movie ? movie.name : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Genre: {{movie ? movie.genre : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Duration: {{movie ? movie.duration : ""}}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+</body>

@@ -43,6 +43,24 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { RoomDeleteComponent } from './room/room-delete/room-delete.component';
 import { RoomUpdateComponent } from './room/room-update/room-update.component';
+import { MovieComponent } from './movie/movie.component';
+import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
+import { MovieListComponent } from './movie/movie-list/movie-list.component';
+import { MovieAddComponent } from './movie/movie-add/movie-add.component';
+import { MovieUpdateComponent } from './movie/movie-update/movie-update.component';
+import { MovieDeleteComponent } from './movie/movie-delete/movie-delete.component';
+import {MovieService} from "./movie/shared/movie.service";
+import { TicketComponent } from './ticket/ticket.component';
+import { TicketListComponent } from './ticket/ticket-list/ticket-list.component';
+import { TicketDetailsComponent } from './ticket/ticket-details/ticket-details.component';
+import { TicketAddComponent } from './ticket/ticket-add/ticket-add.component';
+import { TicketDeleteComponent } from './ticket/ticket-delete/ticket-delete.component';
+import { TicketUpdateComponent } from './ticket/ticket-update/ticket-update.component';
+import {TicketService} from "./ticket/shared/ticket.service";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {NgxMatDatetimePickerModule, NgxMatNativeDateModule} from "@angular-material-components/datetime-picker";
+
 
 @NgModule({
   declarations: [
@@ -65,6 +83,19 @@ import { RoomUpdateComponent } from './room/room-update/room-update.component';
     ClientDetailsComponent,
     RoomDeleteComponent,
     RoomUpdateComponent,
+    MovieComponent,
+    MovieDetailsComponent,
+    MovieListComponent,
+    MovieAddComponent,
+    MovieUpdateComponent,
+    MovieDeleteComponent,
+    TicketComponent,
+    TicketListComponent,
+    TicketDetailsComponent,
+    TicketAddComponent,
+    TicketDeleteComponent,
+    TicketUpdateComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -90,8 +121,12 @@ import { RoomUpdateComponent } from './room/room-update/room-update.component';
     MatAutocompleteModule,
     MatSortModule,
     MatSnackBarModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    NgxMatNativeDateModule,
+    NgxMatDatetimePickerModule,
   ],
-  providers: [CinemaService, ClientService, RoomService],
+  providers: [CinemaService, ClientService, MovieService, RoomService, TicketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

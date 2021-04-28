@@ -18,12 +18,17 @@ export class CinemaService {
 
   getFilteredCinemas(string : string) : Observable<Cinema[]>{
     return this.httpClient
-      .post<Array<Cinema>>(this.url+'/filter', string);
+      .post<Array<Cinema>>(`${this.url}/filter`, string);
   }
 
-  getSortedFilteredCinemasByName(direction : string) : Observable<Cinema[]>{
+  getSortedCinemasByName(direction : string) : Observable<Cinema[]>{
     return this.httpClient
-      .post<Array<Cinema>>(this.url+'/sort', direction);
+      .post<Array<Cinema>>(`${this.url}/sortName`, direction);
+  }
+
+  getSortedCinemasByAddress(direction : string) : Observable<Cinema[]>{
+    return this.httpClient
+      .post<Array<Cinema>>(`${this.url}/sortAddress`, direction);
   }
 
   saveCinema(cinema : Cinema) : Observable<Cinema>{
@@ -31,11 +36,11 @@ export class CinemaService {
   }
 
   updateCinema(cinema : Cinema) : Observable<Cinema>{
-    return this.httpClient.put<Cinema>(this.url + '/'+ cinema.id, cinema);
+    return this.httpClient.put<Cinema>(`${this.url}/${cinema.id}`, cinema);
   }
 
   deleteCinema(cinema : Cinema) : Observable<Cinema>{
-    return this.httpClient.delete<Cinema>(this.url + '/'+ cinema.id);
+    return this.httpClient.delete<Cinema>(`${this.url}/${cinema.id}`);
   }
 
 }

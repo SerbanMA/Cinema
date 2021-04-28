@@ -1,0 +1,53 @@
+<body>
+
+<div class="search">
+  <form class="form">
+    <mat-form-field appearance="outline" class="form-search">
+      <input matInput type="text" autocomplete="off" placeholder="Search" [formControl]="formSearch"/>
+      <mat-icon matPrefix aria-hidden="false">search</mat-icon>
+    </mat-form-field>
+  </form>
+</div>
+
+
+<div class="mat-elevation-z8 container">
+  <div class="table-container">
+    <table mat-table matSort [dataSource]="dataSource" class="table" >
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="id"> <button class="add-button"> <a routerLink="/movies-add"> <mat-icon aria-hidden="false">add</mat-icon> </a> </button> </th>
+        <td mat-cell *matCellDef="let movie"> </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Name </th>
+        <td mat-cell *matCellDef="let movie"> {{movie.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Genre </th>
+        <td mat-cell *matCellDef="let movie"> {{movie.genre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef class="actions"> Actions </th>
+        <td mat-cell *matCellDef="let movie"  style="display: flex">
+          <button class="update-button"> <a routerLink="/movies-update" [state]="movie"> <mat-icon aria-hidden="false">edit</mat-icon> </a> </button>
+          <button class="delete-button"> <a routerLink="/movies-delete" [state]="movie"> <mat-icon aria-hidden="false">delete</mat-icon> </a> </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id', 'name', 'genre', 'update']"></tr>
+      <tr mat-row *matRowDef="let movie; columns: ['id', 'name', 'genre', 'update'];" (click)="onSelected(movie)"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5,10,20]"
+                   showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+
+<app-movie-details [movie]="selectedMovie"></app-movie-details>
+
+</body>

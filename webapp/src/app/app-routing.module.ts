@@ -15,6 +15,16 @@ import {RoomAddComponent} from "./room/room-add/room-add.component";
 import {RoomUpdateComponent} from "./room/room-update/room-update.component";
 import {RoomDeleteComponent} from "./room/room-delete/room-delete.component";
 
+import {MovieComponent} from "./movie/movie.component";
+import {MovieAddComponent} from "./movie/movie-add/movie-add.component";
+import {MovieUpdateComponent} from "./movie/movie-update/movie-update.component";
+import {MovieDeleteComponent} from "./movie/movie-delete/movie-delete.component";
+
+import {TicketComponent} from "./ticket/ticket.component";
+import {TicketAddComponent} from "./ticket/ticket-add/ticket-add.component";
+import {TicketUpdateComponent} from "./ticket/ticket-update/ticket-update.component";
+import {TicketDeleteComponent} from "./ticket/ticket-delete/ticket-delete.component";
+
 const routes: Routes = [
   {path: 'cinemas', component: CinemaComponent},
   {path: 'cinemas-add', component: CinemaAddComponent},
@@ -26,10 +36,20 @@ const routes: Routes = [
   {path: 'clients-update', component: ClientUpdateComponent},
   {path: 'clients-delete', component: ClientDeleteComponent},
 
+  {path: 'movies', component: MovieComponent},
+  {path: 'movies-add', component: MovieAddComponent},
+  {path: 'movies-update', component: MovieUpdateComponent},
+  {path: 'movies-delete', component: MovieDeleteComponent},
+
   {path: 'rooms', component: RoomComponent},
   {path: 'rooms-add', component: RoomAddComponent},
   {path: 'rooms-update', component: RoomUpdateComponent},
   {path: 'rooms-delete', component: RoomDeleteComponent},
+
+  {path: 'tickets', component: TicketComponent},
+  {path: 'tickets-add', component: TicketAddComponent},
+  {path: 'tickets-update', component: TicketUpdateComponent},
+  {path: 'tickets-delete', component: TicketDeleteComponent},
 
 ];
 

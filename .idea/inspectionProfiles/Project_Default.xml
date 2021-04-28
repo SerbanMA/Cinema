@@ -9,7 +9,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="17">
+          <list size="19">
             <item index="0" class="java.lang.String" itemvalue="sticky" />
             <item index="1" class="java.lang.String" itemvalue="ng-src" />
             <item index="2" class="java.lang.String" itemvalue="matinput" />
@@ -27,6 +27,8 @@
             <item index="14" class="java.lang.String" itemvalue="mat-header-row" />
             <item index="15" class="java.lang.String" itemvalue="mat-row" />
             <item index="16" class="java.lang.String" itemvalue="formfirstname" />
+            <item index="17" class="java.lang.String" itemvalue="matdatepickercancel" />
+            <item index="18" class="java.lang.String" itemvalue="matdatepickerapply" />
           </list>
         </value>
       </option>
@@ -35,7 +37,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="32">
+          <list size="35">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -68,6 +70,9 @@
             <item index="29" class="java.lang.String" itemvalue="mat-form-field" />
             <item index="30" class="java.lang.String" itemvalue="app-client-details" />
             <item index="31" class="java.lang.String" itemvalue="app-room-details" />
+            <item index="32" class="java.lang.String" itemvalue="mat-datepicker-toggle" />
+            <item index="33" class="java.lang.String" itemvalue="mat-datepicker" />
+            <item index="34" class="java.lang.String" itemvalue="mat-datepicker-actions" />
           </list>
         </value>
       </option>

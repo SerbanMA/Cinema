@@ -35,6 +35,7 @@ public class TicketController {
 
     @RequestMapping(value = "/tickets", method = RequestMethod.POST)
     TicketDto addTicket(@RequestBody TicketDto ticketDto){
+
         log.trace("addTicket - method entered: ticketDto={}", ticketDto);
         var ticket = ticketConverter.convertDtoToModel(ticketDto);
 

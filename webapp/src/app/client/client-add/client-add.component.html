@@ -13,7 +13,7 @@
     <form [formGroup]="formGroup" (ngSubmit)="saveClient()">
       <mat-form-field appearance="standard">
         <mat-label>First Name *</mat-label>
-        <input matInput type="text" autocomplete="off" placeholder="First Name *" formControlName="formFirstName"/>
+        <input matInput type="text" autocomplete="nope" placeholder="First Name *" formControlName="formFirstName"/>
         <mat-hint class="text-danger" *ngIf="formGroup.get('formFirstName').hasError('required') && formGroup.get('formFirstName').touched">
           First name is required
         </mat-hint>
@@ -42,7 +42,10 @@
 
       <mat-action-list>
         <mat-card-actions align="end">
-          <button mat-button type="submit" [disabled]="!formGroup.valid" > <mat-icon aria-hidden="false">send</mat-icon> </button>
+          <button mat-button type="submit" [disabled]="!formGroup.valid" >
+            <mat-icon *ngIf="formGroup.valid" aria-hidden="false">send</mat-icon>
+            <mat-icon *ngIf="!formGroup.valid" aria-hidden="false">report</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-action-list>
 

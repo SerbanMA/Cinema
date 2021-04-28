@@ -1,0 +1,71 @@
+<body>
+
+<div class="search">
+  <form class="form">
+    <mat-form-field appearance="outline" class="form-search">
+      <input matInput type="text" autocomplete="off" placeholder="Search" [formControl]="formSearch"/>
+      <mat-icon matPrefix aria-hidden="false">search</mat-icon>
+    </mat-form-field>
+  </form>
+</div>
+
+<div class="mat-elevation-z8 container">
+  <div class="table-container">
+    <table mat-table matSort [dataSource]="dataSource" class="table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="id"> <button class="add-button"> <a routerLink="/tickets-add" > <mat-icon aria-hidden="false">add</mat-icon> </a> </button> </th>
+        <td mat-cell *matCellDef="let ticket"> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="movieName">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Movie </th>
+        <td mat-cell *matCellDef="let ticket"> {{ticket.movie ? ticket.movie.name : ''}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="roomName">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Room </th>
+        <td mat-cell *matCellDef="let ticket"> {{ticket.room ? ticket.room.name : ''}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="clientName">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Client </th>
+        <td mat-cell *matCellDef="let ticket"> {{ticket.client ? ticket.client.firstName + ' ' + ticket.client.lastName : ''}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Price </th>
+        <td mat-cell *matCellDef="let ticket"> {{ticket.price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Date </th>
+        <td mat-cell *matCellDef="let ticket"> {{ticket.date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef class="column"> Time </th>
+        <td mat-cell *matCellDef="let ticket"> {{ticket.time}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef class="update"> Update </th>
+        <td mat-cell *matCellDef="let ticket" style="display: flex">
+          <button class="update-button"> <a routerLink="/tickets-update" [state]="ticket"> <mat-icon aria-hidden="false">edit</mat-icon> </a> </button>
+          <button class="delete-button"> <a routerLink="/tickets-delete" [state]="ticket"> <mat-icon aria-hidden="false">delete</mat-icon> </a> </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id','movieName', 'roomName', 'clientName', 'price', 'date', 'time', 'update']"></tr>
+      <tr mat-row *matRowDef="let room; columns: ['id','movieName', 'roomName', 'clientName', 'price', 'date', 'time', 'update'];" (click)="onSelected(room)"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5,10,20]"
+                   showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+
+<app-ticket-details [ticket]="selectedTicket"></app-ticket-details>
+
+</body>

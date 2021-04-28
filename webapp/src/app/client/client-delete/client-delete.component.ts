@@ -26,7 +26,7 @@ export class ClientDeleteComponent implements OnInit {
     const client : Client = <Client>{id:this.client.id}
     this.clientService.deleteClient(client).subscribe(() => {
       this.router.navigate(['/clients']).
-      then(() => this.snack.open("Cinema successfully deleted", "x", {duration: 3000, panelClass: ['snackbar']}));
+      then(() => this.snack.open("Client successfully deleted", "x", {duration: 3000, panelClass: ['snackbar']}));
     });
   }
 

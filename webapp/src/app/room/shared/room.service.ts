@@ -23,11 +23,11 @@ export class RoomService {
   }
 
   updateRoom(room : Room) : Observable<Room>{
-    return this.httpClient.put<Room>(this.url + '/'+ room.id, room);
+    return this.httpClient.put<Room>(`${this.url}/${room.id}`, room);
   }
 
   deleteRoom(room : Room) : Observable<Room>{
-    return this.httpClient.delete<Room>(this.url + '/'+ room.id);
+    return this.httpClient.delete<Room>(`${this.url}/${room.id}`);
   }
 
 }

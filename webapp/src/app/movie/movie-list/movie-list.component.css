@@ -1,0 +1,106 @@
+table{
+  width: 100%;
+  border-color: #66FCF1;
+}
+
+.basic-container {
+  margin: 10px 30px 30px 30px;
+}
+
+.id{
+  width: 4%;
+}
+
+.column{
+  width: 45%;
+}
+
+.actions {
+  width: 5%;
+}
+
+button{
+  margin: 10px 2px;
+  border: 2px solid #1F2233;
+  border-radius: 5px;
+  width: 30px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1px;
+;
+}
+
+button:hover{
+  background-color: #66FCF1;
+}
+
+button:active{
+  background-color: #45A29E;
+}
+
+a{
+  color: black;
+
+}
+
+.id-button{
+  border-radius: 100px;
+}
+
+.add-button{
+  background-color: rgba(197, 198, 199, 0.75);
+}
+
+.update-button:active{
+
+}
+
+.search{
+  display: flex;
+  width: 100%;
+}
+
+.form{
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.form-search{
+
+  width: 200px;
+  height: 50px;
+}
+
+/* Structure */
+.container {
+  margin: 10px 30px 30px 30px;
+  height: auto;
+  box-shadow: 2px 0 9px rgba(0,0,0,0.4);
+}
+
+th{
+  font-size: 16px;
+  color: #66FCF1;
+  background-color: #1F2233;
+}
+
+tr{
+  color: #1F2233;
+  background-color: #C5C6C7;
+}
+
+td{
+
+}
+
+mat-paginator{
+  color: #1F2233;
+  background-color: #C5C6C7;
+}
+
+::ng-deep .mat-sort-header-arrow {
+  color: #66FCF1;
+}
+
+

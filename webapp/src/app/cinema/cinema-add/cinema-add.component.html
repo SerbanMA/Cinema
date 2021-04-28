@@ -42,7 +42,10 @@
         </div>
 
         <div style="">
-          <button type="submit" class="btn" [disabled]="!formGroup.form.valid"> <mat-icon aria-hidden="false">send</mat-icon> </button>
+          <button type="submit" class="btn" [disabled]="!formGroup.form.valid">
+            <mat-icon *ngIf="formGroup.valid" aria-hidden="false">send</mat-icon>
+            <mat-icon *ngIf="!formGroup.valid" aria-hidden="false">report</mat-icon>
+          </button>
         </div>
 
       </form>
