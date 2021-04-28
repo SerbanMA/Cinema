@@ -98,9 +98,9 @@ public class CinemaController {
         return cinemasDto;
     }
 
-    @RequestMapping(value = "/cinemas/sort", method = RequestMethod.POST)
-    List<CinemaDto> sort(@RequestBody String isAsc) {
-        log.trace("sort - method entered: isAsc={}", isAsc);
+    @RequestMapping(value = "/cinemas/sortName", method = RequestMethod.POST)
+    List<CinemaDto> sortName(@RequestBody String isAsc) {
+        log.trace("sortName - method entered: isAsc={}", isAsc);
 
 
         List<CinemaDto> cinemasDto = cinemaConverter.convertModelsToDtos(
@@ -110,7 +110,23 @@ public class CinemaController {
         if (isAsc.equals("desc"))
             Collections.reverse(cinemasDto);
 
-        log.trace("sort - method finished");
+        log.trace("sortName - method finished");
+        return cinemasDto;
+    }
+
+    @RequestMapping(value = "/cinemas/sortAddress", method = RequestMethod.POST)
+    List<CinemaDto> sortAddress(@RequestBody String isAsc) {
+        log.trace("sortAddress - method entered: isAsc={}", isAsc);
+
+
+        List<CinemaDto> cinemasDto = cinemaConverter.convertModelsToDtos(
+                cinemaService.getAllCinemas());
+        cinemasDto.sort(Comparator.comparing(CinemaDto::getAddress));
+
+        if (isAsc.equals("desc"))
+            Collections.reverse(cinemasDto);
+
+        log.trace("sortAddress - method finished");
         return cinemasDto;
     }
 }

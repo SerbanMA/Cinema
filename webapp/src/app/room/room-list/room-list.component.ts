@@ -30,11 +30,24 @@ export class RoomListComponent implements OnInit {
         this.dataSource.data = rooms;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch (property) {
+            case 'cinemaName':
+              // @ts-ignore
+              return item.cinema.name;
+            default:
+              return item[property];
+          }
+        };
         this.dataSource.filter = '';
+        this.dataSource.filterPredicate = function(data, filter: string): boolean {
+          // @ts-ignore
+          return (data.name.toLowerCase()).includes(filter.toLowerCase()) || (data.floorNumber.toString()).includes(filter) || (data.cinema.name.toLowerCase()).includes(filter.toLowerCase());
+        };
     });
 
     setTimeout(() => {
-      this.formSearch.valueChanges.subscribe(search => this.dataSource.filter = search);
+      this.formSearch.valueChanges.subscribe(search => {this.dataSource.filter = search; });
     })
   }
 

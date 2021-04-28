@@ -3,11 +3,9 @@ import {CinemaService} from "../../cinema/shared/cinema.service";
 import {Cinema} from "../../cinema/shared/cinema.model";
 import {RoomService} from "../shared/room.service";
 import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {Observable, of} from "rxjs";
-import {map, retry, startWith} from "rxjs/operators";
+import {Observable} from "rxjs";
+import {map, startWith} from "rxjs/operators";
 import {Room} from "../shared/room.model";
-import {group} from "@angular/animations";
-import {ClientService} from "../../client/shared/client.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 

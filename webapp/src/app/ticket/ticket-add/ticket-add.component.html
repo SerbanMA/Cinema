@@ -1,0 +1,102 @@
+<body>
+
+<mat-card class="card">
+
+  <button class="back-button"> <a href="/tickets"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+
+  <mat-card-header>
+    <mat-card-title>Ticket</mat-card-title>
+    <mat-card-subtitle>- add -</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <form [formGroup]="formGroup" (ngSubmit)="saveTicket()">
+
+      <mat-form-field appearance="standard">
+        <mat-label>Movie *</mat-label>
+        <input matInput type="text" placeholder="Movie *" formControlName="formMovie" [matAutocomplete]="autoMovie">
+        <mat-hint class="text-danger" *ngIf="(formGroup.get('formMovie').hasError('required') ||
+                                              formGroup.get('formMovie').hasError('invalidAutocompleteObject')) &&
+                                              formGroup.get('formMovie').touched">
+          Cinema name not recognised. Please chose one of the options
+        </mat-hint>
+        <mat-autocomplete autoActiveFirstOption #autoMovie="matAutocomplete" [displayWith]="displayMovie">
+          <mat-option *ngFor="let movie of filteredMovies | async" [value]="movie">
+            {{movie.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Room *</mat-label>
+        <input matInput type="text" placeholder="Room *" formControlName="formRoom" [matAutocomplete]="autoRoom">
+        <mat-hint class="text-danger" *ngIf="(formGroup.get('formRoom').hasError('required') ||
+                                              formGroup.get('formRoom').hasError('invalidAutocompleteObject')) &&
+                                              formGroup.get('formRoom').touched">
+          Room name not recognised. Please chose one of the options
+        </mat-hint>
+        <mat-autocomplete autoActiveFirstOption #autoRoom="matAutocomplete" [displayWith]="displayRoom">
+          <mat-option *ngFor="let room of filteredRooms | async" [value]="room">
+            {{room.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Client *</mat-label>
+        <input matInput type="text" placeholder="Client *" formControlName="formClient" [matAutocomplete]="autoClient">
+        <mat-hint class="text-danger" *ngIf="(formGroup.get('formClient').hasError('invalidAutocompleteObject')) &&
+                                              formGroup.get('formClient').touched">
+          Client name not recognised. Please chose one of the options
+        </mat-hint>
+        <mat-autocomplete autoActiveFirstOption #autoClient="matAutocomplete" [displayWith]="displayClient">
+          <mat-option *ngFor="let client of filteredClients | async" [value]="client">
+            {{client.firstName}} {{client.lastName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+
+      <mat-form-field appearance="standard">
+        <mat-label>Price *</mat-label>
+        <input matInput type="number" autocomplete="off" placeholder="Price *" formControlName="formPrice"/>
+        <mat-hint class="text-danger" *ngIf="formGroup.get('formPrice').hasError('required') && formGroup.get('formPrice').touched">
+          Name is required
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [ngxMatDatetimePicker]="picker" autocomplete="off" placeholder="Date & Time *" formControlName="formDate">
+        <mat-hint class="text-danger" *ngIf="formGroup.get('formDate').hasError('required') && formGroup.get('formDate').touched">
+          Date & Time are required
+        </mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+      </mat-form-field>
+
+
+      <mat-action-list>
+        <mat-card-actions align="end">
+          <button mat-button type="submit" [disabled]="!formGroup.valid" >
+            <mat-icon *ngIf="formGroup.valid" aria-hidden="false">send</mat-icon>
+            <mat-icon *ngIf="!formGroup.valid" aria-hidden="false">report</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-action-list>
+
+    </form>
+
+
+  </mat-card-content>
+
+</mat-card>
+
+</body>
+
+
+
+
+
+
+<p>ticket-add works!</p>

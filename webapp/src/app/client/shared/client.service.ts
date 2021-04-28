@@ -21,11 +21,10 @@ export class ClientService {
   }
 
   updateClient(client : Client) : Observable<Client>{
-    return this.httpClient.put<Client>(this.url + '/'+ client.id, client);
+    return this.httpClient.put<Client>(`${this.url}/${client.id}`, client);
   }
 
   deleteClient(client : Client) : Observable<Client>{
-    return this.httpClient.delete<Client>(this.url + '/'+ client.id);
+    return this.httpClient.delete<Client>(`${this.url}/${client.id}`);
   }
-
 }

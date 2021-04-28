@@ -24,16 +24,8 @@ import java.time.LocalTime;
 @JsonSerialize
 public class TicketDto extends BaseDto{
     private Double price;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    private LocalDate date;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @JsonSerialize(using = LocalTimeSerializer.class)
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
-    private LocalTime time;
+    private String date;
+    private String time;
     private Movie movie;
     private Room room;
     private Client client;

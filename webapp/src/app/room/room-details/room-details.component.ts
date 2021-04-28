@@ -16,7 +16,4 @@ export class RoomDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  close() : void{
-    this.room = null;
-  }
 }

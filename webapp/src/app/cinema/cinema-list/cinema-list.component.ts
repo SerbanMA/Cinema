@@ -49,19 +49,28 @@ export class CinemaListComponent implements OnInit{
   }
 
   sortData(sort: Sort) {
-    const data = this.dataSource.data.slice();
+
     if (!sort.active || sort.direction === '') {
       return;
     }
 
     switch (sort.active) {
       case 'name':
-        this.cinemaService.getSortedFilteredCinemasByName(sort.direction)
+        this.cinemaService.getSortedCinemasByName(sort.direction)
           .subscribe(cinemas => {
             this.dataSource.data = cinemas;
             console.log(cinemas)
           });
         return;
+
+      case 'address':
+        this.cinemaService.getSortedCinemasByAddress(sort.direction)
+          .subscribe(cinemas => {
+            this.dataSource.data = cinemas;
+            console.log(cinemas)
+          });
+        return;
+
       default:
         return;
     }

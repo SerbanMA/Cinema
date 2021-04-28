@@ -10,7 +10,6 @@ import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/lay
 export class AppComponent {
   title = 'Cinema Manager';
 
-  imagePath = '/app/cinema-icon.png'
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
   constructor(private breakpointObserver : BreakpointObserver) {

@@ -12,8 +12,8 @@
 
     <form [formGroup]="formGroup" (ngSubmit)="saveRoom()">
       <mat-form-field appearance="standard">
-        <mat-label>Name</mat-label>
-        <input matInput type="text" autocomplete="off" placeholder="Name." formControlName="formName"/>
+        <mat-label>Name *</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="Name *" formControlName="formName"/>
         <mat-hint class="text-danger" *ngIf="formGroup.get('formName').hasError('required') && formGroup.get('formName').touched">
           Name is required
         </mat-hint>
@@ -30,8 +30,8 @@
       </mat-form-field>
 
       <mat-form-field appearance="standard">
-        <mat-label>Cinema</mat-label>
-        <input matInput type="text" placeholder="Cinema" formControlName="formCinema" [matAutocomplete]="auto">
+        <mat-label>Cinema *</mat-label>
+        <input matInput type="text" placeholder="Cinema *" formControlName="formCinema" [matAutocomplete]="auto">
         <mat-hint class="text-danger" *ngIf="(formGroup.get('formCinema').hasError('required') ||
                                               formGroup.get('formCinema').hasError('invalidAutocompleteObject')) &&
                                               formGroup.get('formCinema').touched">
@@ -46,7 +46,10 @@
 
       <mat-action-list>
         <mat-card-actions align="end">
-          <button mat-button type="submit" [disabled]="!formGroup.valid" > <mat-icon aria-hidden="false">send</mat-icon> </button>
+          <button mat-button type="submit" [disabled]="!formGroup.valid" >
+            <mat-icon *ngIf="formGroup.valid" aria-hidden="false">send</mat-icon>
+            <mat-icon *ngIf="!formGroup.valid" aria-hidden="false">report</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-action-list>
 

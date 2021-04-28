@@ -46,7 +46,10 @@
 
       <mat-action-list>
         <mat-card-actions align="end">
-          <button mat-button type="submit" [disabled]="!formGroup.valid" > <mat-icon aria-hidden="false">send</mat-icon> </button>
+          <button mat-button type="submit" [disabled]="!formGroup.valid" >
+            <mat-icon *ngIf="formGroup.valid" aria-hidden="false">send</mat-icon>
+            <mat-icon *ngIf="!formGroup.valid" aria-hidden="false">report</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-action-list>
 

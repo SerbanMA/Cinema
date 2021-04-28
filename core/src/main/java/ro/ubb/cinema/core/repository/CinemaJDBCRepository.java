@@ -10,6 +10,4 @@ public interface CinemaJDBCRepository extends Repository<Long, Cinema> {
 
     List<Cinema> getAllByNameContainingIgnoreCaseOrAddressContainingIgnoreCase(String name, String address);
 
-//    @Query("select c from Cinema c where c.name = ?1")
-//    List<Cinema> findByName(String name);
 }

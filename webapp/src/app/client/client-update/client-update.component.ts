@@ -33,11 +33,10 @@ export class ClientUpdateComponent implements OnInit {
         this.formGroup.controls['formLastName'].setValue(client.lastName);
         this.formGroup.controls['formEmail'].setValue(client.email);
         this.formGroup.controls['formAge'].setValue(client.age);
-        console.log(client)
       });
   }
 
-  updateCinema(): void{
+  updateClient(): void{
     const client : Client = <Client>{
       id: this.id,
       firstName: this.formGroup.controls['formFirstName'].value,
@@ -47,7 +46,7 @@ export class ClientUpdateComponent implements OnInit {
     }
     this.clientService.updateClient(client).subscribe(() => {
       this.router.navigate(['/clients']).
-      then(() => this.snack.open("Cinema successfully updated", "x", {duration: 3000, panelClass: ['snackbar']}));
+      then(() => this.snack.open("Client successfully updated", "x", {duration: 3000, panelClass: ['snackbar']}));
     });
   }
 

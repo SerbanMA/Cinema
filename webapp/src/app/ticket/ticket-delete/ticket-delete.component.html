@@ -1,0 +1,73 @@
+<body>
+
+<mat-card class="card">
+
+  <button class="back-button"> <a href="/tickets"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+
+  <mat-card-header>
+    <mat-card-title>Ticket</mat-card-title>
+    <mat-card-subtitle>- are you sure you want to delete -</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <p> </p>
+    <mat-list role="list">
+      <mat-list-item role="listitem">Price: {{ticket ? ticket.price : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Date: {{ticket ? ticket.date : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Time: {{ticket ? ticket.time : ""}}</mat-list-item>
+
+      <mat-card class="content">
+        <mat-card-header>
+          <mat-card-title>Movie</mat-card-title>
+          <mat-card-subtitle>ID: {{ticket && ticket.movie ? ticket.movie.id : ""}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Name: {{ticket && ticket.movie ? ticket.movie.name : ""}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="content">
+        <mat-card-header>
+          <mat-card-title>Room</mat-card-title>
+          <mat-card-subtitle>ID: {{ticket && ticket.room ? ticket.room.id : ""}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Name: {{ticket && ticket.room ? ticket.room.name : ""}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="content">
+        <mat-card-header>
+          <mat-card-title>Client</mat-card-title>
+          <mat-card-subtitle>ID: {{ticket && ticket.client ? ticket.client.id : ""}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Name: {{ticket && ticket.client ? ticket.client.firstName : ""}} {{ticket && ticket.client ? ticket.client.lastName : ""}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-list>
+
+    <mat-action-list>
+      <mat-card-actions align="end">
+        <button mat-button (click)="deleteTicket()"> <mat-icon aria-hidden="false">send</mat-icon> </button>
+      </mat-card-actions>
+    </mat-action-list>
+
+
+  </mat-card-content>
+</mat-card>
+
+</body>
+
+
+
+
+
+
