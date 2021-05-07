@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.ubb.cinema.core.repository.ClientJDBCRepository;
 import ro.ubb.cinema.core.domain.entities.Client;
-import ro.ubb.cinema.core.domain.validators.ClientValidator;
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 
 import javax.transaction.Transactional;
 import java.util.Comparator;
@@ -26,12 +24,9 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientJDBCRepository repository;
 
-    private final ClientValidator clientValidator = new ClientValidator();
-
     @Override
-    public Client saveClient(Client client) throws ValidatorException {
+    public Client saveClient(Client client) {
         log.trace("addClient - method entered: client={}", client);
-//        clientValidator.validate(client);
         Client returnedClient = repository.save(client);
         log.trace("addClient - method finished");
         return returnedClient;
@@ -49,12 +44,11 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public Client updateClient(Client client) {
         log.trace("updateClient - method entered: client={}", client);
-//        clientValidator.validate(client);
         Client updateClient = repository.findById(client.getId()).orElseThrow();
         updateClient.setFirstName(client.getFirstName());
         updateClient.setLastName(client.getLastName());
         updateClient.setEmail(client.getEmail());
-        updateClient.setAge(client.getAge());
+        updateClient.setIdCard(client.getIdCard());
         log.trace("updateClient - method finished");
 
         return client;

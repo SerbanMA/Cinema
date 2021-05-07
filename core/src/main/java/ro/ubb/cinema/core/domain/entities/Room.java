@@ -24,7 +24,7 @@ public class Room extends BaseEntity<Long>{
     private String name;
     private Integer numberOfSeats;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="cinemaId")
+    @JoinColumn(name="cinema_id")
     private Cinema cinema;
 
 }

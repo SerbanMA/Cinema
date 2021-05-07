@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ro.ubb.cinema.core.domain.entities.Cinema;
-import ro.ubb.cinema.core.domain.validators.CinemaValidator;
 import ro.ubb.cinema.core.repository.CinemaJDBCRepository;
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 
 import java.util.Comparator;
 import java.util.List;
@@ -26,19 +24,16 @@ public class CinemaServiceImpl implements CinemaService {
     @Autowired
     private CinemaJDBCRepository repository;
 
-    private final CinemaValidator cinemaValidator = new CinemaValidator();
-
     @Override
-    public Cinema saveCinema(Cinema cinema) throws ValidatorException{
+    public Cinema saveCinema(Cinema cinema){
         log.trace("saveCinema - method entered: cinema={}", cinema);
-//        cinemaValidator.validate(cinema);
         Cinema returnedCinema = repository.save(cinema);
         log.trace("saveCinema - method finished");
         return returnedCinema;
     }
 
     @Override
-    public void deleteCinema(Long id) throws ValidatorException {
+    public void deleteCinema(Long id) {
         log.trace("deleteCinema - method entered: cinemaId={}", id);
         repository.deleteById(id);
         log.trace("deleteCinema - method finished");
@@ -48,7 +43,6 @@ public class CinemaServiceImpl implements CinemaService {
     @Transactional
     public Cinema updateCinema(Cinema cinema) {
         log.trace("updateCinema - method entered: cinema={}", cinema);
-//        cinemaValidator.validate(cinema);
         Cinema updateCinema = repository.findById(cinema.getId()).orElseThrow();
         updateCinema.setName(cinema.getName());
         updateCinema.setAddress(cinema.getAddress());

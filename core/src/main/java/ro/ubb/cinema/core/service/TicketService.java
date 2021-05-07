@@ -1,6 +1,5 @@
 package ro.ubb.cinema.core.service;
 
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 import ro.ubb.cinema.core.domain.entities.Ticket;
 
 import java.util.List;
@@ -20,10 +19,8 @@ public interface TicketService {
      *          must not be null.
      * @throws IllegalArgumentException
      *          if the given entity is null.
-     * @throws ValidatorException
-     *          if the ticket is not valid.
      */
-    Ticket saveTicket(Ticket ticket) throws ValidatorException;
+    Ticket saveTicket(Ticket ticket);
 
     /**
      * Removes the given ticket.
@@ -39,7 +36,7 @@ public interface TicketService {
      * @param ticket
      *          must not be null.
      */
-    Ticket updateTicket(Ticket ticket) throws ValidatorException;
+    Ticket updateTicket(Ticket ticket);
 
 
     /**

@@ -13,7 +13,7 @@
     <form [formGroup]="formGroup" (ngSubmit)="updateClient()">
       <mat-form-field appearance="standard">
         <mat-label>First Name</mat-label>
-        <input matInput type="text" autocomplete="off" placeholder="First Name" formControlName="formFirstName"/>
+        <input matInput type="text" autocomplete="nope" placeholder="First Name" formControlName="formFirstName"/>
         <mat-hint class="text-danger" *ngIf="formGroup.get('formFirstName').hasError('required') && formGroup.get('formFirstName').touched">
           First name is required
         </mat-hint>
@@ -22,7 +22,7 @@
 
       <mat-form-field appearance="standard">
         <mat-label> Last Name</mat-label>
-        <input matInput type="text" autocomplete="off" placeholder="Last Name" formControlName="formLastName"/>
+        <input matInput type="text" autocomplete="nope" placeholder="Last Name" formControlName="formLastName"/>
         <mat-hint class="text-danger" *ngIf="formGroup.get('formLastName').hasError('required') && formGroup.get('formLastName').touched">
           Last name is required
         </mat-hint>
@@ -30,15 +30,37 @@
 
       <mat-form-field appearance="standard">
         <mat-label>eMail</mat-label>
-        <input matInput type="text" autocomplete="off" placeholder="Email" formControlName="formEmail"/>
+        <input matInput type="text" autocomplete="nope" placeholder="Email" formControlName="formEmail"/>
         <mat-hint class="text-danger" *ngIf="formGroup.get('formEmail').hasError('required') && formGroup.get('formEmail').touched">
           Email is required
         </mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="standard">
+        <mat-label>CNP</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="CNP" formControlName="formCNP"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Series</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="Series" formControlName="formSeries"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>CNP</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="Number" formControlName="formNumber"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
         <mat-label>Address</mat-label>
-        <input matInput type="number" autocomplete="off" placeholder="Age" formControlName="formAge"/>
+        <input matInput type="text" autocomplete="off" placeholder="Address" formControlName="formAddress"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" autocomplete="off" placeholder="Date of Birth" formControlName="formDateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [startView]="startView" [startAt]="startAt"></mat-datepicker>
       </mat-form-field>
 
       <mat-action-list>

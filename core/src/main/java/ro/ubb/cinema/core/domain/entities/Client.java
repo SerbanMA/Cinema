@@ -1,7 +1,7 @@
 package ro.ubb.cinema.core.domain.entities;
 import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 /**
  * Class for the Client entity
@@ -19,5 +19,14 @@ public class Client extends BaseEntity<Long>{
 	private String firstName;
     private String lastName;
 	private String email;
-	private Integer age;
+	@Embedded
+	@AttributeOverrides({
+			@AttributeOverride( name = "cnp", column = @Column(name = "cnp")),
+			@AttributeOverride( name = "series", column = @Column(name = "ID_Series")),
+			@AttributeOverride( name = "number", column = @Column(name = "ID_Number")),
+			@AttributeOverride( name = "address", column = @Column(name = "address")),
+			@AttributeOverride( name = "dateOfBirth", column = @Column(name = "date_of_birth"))
+	})
+
+	private IDCard idCard;
 }

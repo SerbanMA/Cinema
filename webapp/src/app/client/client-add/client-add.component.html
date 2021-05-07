@@ -1,8 +1,8 @@
 <body>
 
-<mat-card class="card">
+<button class="back-button"> <a href="/clients"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
 
-  <button class="back-button"> <a href="/clients"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+<mat-card class="card">
 
   <mat-card-header>
     <mat-card-title>Client</mat-card-title>
@@ -36,8 +36,30 @@
       </mat-form-field>
 
       <mat-form-field appearance="standard">
-        <mat-label>Age</mat-label>
-        <input matInput type="number" autocomplete="off"  placeholder="Age" formControlName="formAge"/>
+        <mat-label>CNP</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="CNP" formControlName="formCNP"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Series</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="Series" formControlName="formSeries"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>CNP</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="Number" formControlName="formNumber"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Address</mat-label>
+        <input matInput type="text" autocomplete="off" placeholder="Address" formControlName="formAddress"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" autocomplete="off" placeholder="Date of Birth" formControlName="formDateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [startView]="startView" [startAt]="startAt"></mat-datepicker>
       </mat-form-field>
 
       <mat-action-list>
