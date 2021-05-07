@@ -9,6 +9,7 @@ import {Client} from "../shared/client.model";
 export class ClientDetailsComponent implements OnInit {
 
   @Input() client : Client;
+  @Input() fromTicket : boolean = false;
 
   constructor() { }
 

@@ -1,54 +1,56 @@
 
+button{
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: var(--grey);
+  border: 2px solid var(--black);
+}
+
+button:hover{
+  background-color: var(--turquoise);
+}
+
+button:active{
+  background-color: var(--dark-turquoise);
+}
+
+button:disabled{
+  background-color: var(--red);
+}
+
+.back-button{
+  margin-top: 15px;
+  margin-left: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--black);
+}
+
+a{
+  color: black;
+}
+
+.text-danger{
+  color: var(--red);
+  border: var(--red);
+}
+
+
+/*mat card*/
 mat-card{
-  border: 10px #66FCF1;
   position: relative;
-  margin: 30px;
-  width: 300px;
-  background-color: #C5C6C7;
-  border-top: 7px solid #1F2233;
+  margin: auto;
+  width: 400px;
+  background-color: var(--white);
+  border-top: 7px solid var(--black);
   border-radius: 5px;
 }
 
 mat-card-content{
   border-radius: 5px;
-}
-
-button{
-  width: 60px;
-  height: 40px;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 2px solid #1F2233;
-}
-
-button:hover{
-  background-color: #66FCF1;
-}
-
-button:active{
-  background-color: #45A29E;
-}
-
-button:disabled{
-  background-color: red;
-}
-
-.text-danger{
-  color: red;
-  border: red;
-}
-
-.back-button{
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 2px solid #1F2233;
-  margin: 0 0 20px -5px;
-}
-
-a{
-  color: black;
 }
 
 mat-card-title{
@@ -63,4 +65,8 @@ mat-card-subtitle{
 
 mat-card-actions{
   margin-right: 30px;
+}
+
+mat-form-field{
+  width: 100%;
 }

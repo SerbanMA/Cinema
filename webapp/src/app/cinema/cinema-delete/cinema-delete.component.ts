@@ -26,8 +26,8 @@ export class CinemaDeleteComponent implements OnInit {
   deleteCinema(): void{
     const cinema : Cinema = <Cinema>{id:this.cinema.id}
     this.cinemaService.deleteCinema(cinema).subscribe(() => {
-      this.router.navigate(['/clients']).
-      then(() => this.snack.open("Client successfully deleted", "x", {duration: 3000, panelClass: ['snackbar']}));
+      this.router.navigate(['/cinemas']).
+      then(() => this.snack.open("Cinema successfully deleted", "x", {duration: 3000, panelClass: ['snackbar']}));
     });
 
   }

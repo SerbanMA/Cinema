@@ -12,11 +12,18 @@
         <mat-list-item role="listitem">Last Name: {{client ? client.lastName : ""}}</mat-list-item>
         <mat-list-item role="listitem">Email: {{client ? client.email : ""}}</mat-list-item>
 
-        <mat-action-list>
-          <mat-card-actions>
-            <button> <a routerLink="/id-card" [state]="client"> <mat-icon aria-hidden="false">featured_play_list</mat-icon> </a> </button>
-          </mat-card-actions>
-        </mat-action-list>
+        <div *ngIf="!fromTicket">
+          <mat-action-list>
+            <mat-card-actions>
+              <div *ngIf="client == null">
+                <button [disabled]="client == null" > <a routerLink="/clients"> <mat-icon aria-hidden="false">report</mat-icon> </a> </button>
+              </div>
+              <div *ngIf="client != null">
+                <button [disabled]="client == null" > <a routerLink="/id-card" [state]="client"> <mat-icon aria-hidden="false">featured_play_list</mat-icon> </a> </button>
+              </div>
+            </mat-card-actions>
+          </mat-action-list>
+        </div>
 
       </mat-list>
     </mat-card-content>

@@ -39,7 +39,11 @@ public class TicketController {
         log.trace("addTicket - method entered: ticketDto={}", ticketDto);
         var ticket = ticketConverter.convertDtoToModel(ticketDto);
 
+        System.out.println(ticket);
+
         var result = ticketService.saveTicket(ticket);
+
+        System.out.println(result);
 
         var resultModel = ticketConverter.convertModelToDto(result);
 

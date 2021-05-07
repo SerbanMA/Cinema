@@ -10,10 +10,17 @@ import {Cinema} from "../../cinema/shared/cinema.model";
 export class RoomDetailsComponent implements OnInit {
 
   @Input() room : Room;
+  @Input() fromTicket : boolean = false;
+
+  isOpen : boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  open() : void {
+    this.isOpen = !this.isOpen;
   }
 
 }

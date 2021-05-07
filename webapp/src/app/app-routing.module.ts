@@ -25,6 +25,7 @@ import {TicketAddComponent} from "./ticket/ticket-add/ticket-add.component";
 import {TicketUpdateComponent} from "./ticket/ticket-update/ticket-update.component";
 import {TicketDeleteComponent} from "./ticket/ticket-delete/ticket-delete.component";
 import {IdCardComponent} from "./id-card/id-card.component";
+import {CinemaDetailsComponent} from "./cinema/cinema-details/cinema-details.component";
 
 const routes: Routes = [
   {path: 'cinemas', component: CinemaComponent},
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path: 'tickets-delete', component: TicketDeleteComponent},
 
   {path: 'id-card', component: IdCardComponent},
+  {path: 'cinema-details', component: CinemaDetailsComponent},
 
 ];
 

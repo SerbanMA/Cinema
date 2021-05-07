@@ -4,7 +4,7 @@ body {
 
 table{
   width: 100%;
-  border-color: #66FCF1;
+  border-color: var(--turquoise);
 }
 
 .basic-container {
@@ -25,21 +25,21 @@ table{
 
 button{
   margin: 10px 2px;
-  border: 2px solid #1F2233;
+  border: 2px solid var(--black);
   border-radius: 5px;
   width: 30px;
   height: 40px;
-  background-color: #C5C6C7;
+  background-color: var(--white);
   text-align: center;
   padding: 1px;
 }
 
 button:hover{
-  background-color: #66FCF1;
+  background-color: var(--turquoise);
 }
 
 button:active{
-  background-color: #45A29E;
+  background-color: var(--dark-turquoise);
 }
 
 a{
@@ -51,12 +51,9 @@ a{
 }
 
 .add-button{
-  background-color: #C5C6C7;
+  background-color: var(--white);
 }
 
-.update-button:active{
-
-}
 
 .search{
   display: flex;
@@ -74,7 +71,7 @@ a{
   height: 50px;
 }
 
-/* Structure */
+
 .container {
   margin: 10px 30px 30px 30px;
   height: auto;
@@ -83,13 +80,13 @@ a{
 
 th{
   font-size: 16px;
-  color: #66FCF1;
-  background-color: #1F2233;
+  color: var(--turquoise);
+  background-color: var(--black);
 }
 
 tr{
-  color: #1F2233;
-  background-color: #C5C6C7;
+  color: var(--black);
+  background-color: var(--white);
 }
 
 td{
@@ -97,12 +94,12 @@ td{
 }
 
 mat-paginator{
-  color: #1F2233;
-  background-color: #C5C6C7;
+  color: var(--black);
+  background-color: var(--white);
 }
 
 ::ng-deep .mat-sort-header-arrow {
-  color: #66FCF1;
+  color: var(--turquoise);
 }
 
 
