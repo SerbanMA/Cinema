@@ -1,7 +1,7 @@
 package ro.ubb.cinema.core.service;
 
 import ro.ubb.cinema.core.domain.entities.Client;
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
+
 
 import java.util.List;
 
@@ -20,13 +20,13 @@ public interface ClientService {
      * @param client: - Client
      *                - the client we want to add
      */
-    Client saveClient(Client client) throws ValidatorException;
+    Client saveClient(Client client);
 
     /**
      * Delete the given client from the list of clients.
      *
-     * @param client: - Client
-     *                - the client we want to delete
+     * @param id: - integerr
+     *                - the client's id we want to delete
      */
     void deleteClient(Long id);
 
@@ -36,7 +36,7 @@ public interface ClientService {
      * @param client: - Client
      *                - the client we want to update.
      */
-    Client updateClient(Client client) throws ValidatorException;
+    Client updateClient(Client client);
 
 
     /**

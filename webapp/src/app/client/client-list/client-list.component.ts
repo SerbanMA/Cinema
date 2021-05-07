@@ -5,7 +5,6 @@ import {ClientService} from "../shared/client.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {FormControl} from "@angular/forms";
-import {startWith} from "rxjs/operators";
 
 @Component({
   selector: 'app-client-list',

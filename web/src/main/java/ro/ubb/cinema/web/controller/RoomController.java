@@ -56,6 +56,7 @@ public class RoomController {
                 roomService.updateRoom(
                         roomConverter.convertDtoToModel(dto)
                 ));
+
         log.trace("updateRoom - method finished: roomDto={}", roomDto);
 
         return roomDto;

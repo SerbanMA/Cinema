@@ -1,0 +1,26 @@
+<body>
+
+<button class="back-button"> <a href="/clients"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+
+
+
+<div >
+  <mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar class="avatar"> <img src="../../assets/avatars/boy.png" alt="avatar" class="avatar"> </div>
+      <mat-card-title>ID CARD</mat-card-title>
+      <mat-card-subtitle>- {{client.firstName}} {{client.lastName}} -</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">CNP:<br/> {{client.idCard ? client.idCard.cnp : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Series: <br/> {{client.idCard ? client.idCard.series : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Number: <br/> {{client.idCard ? client.idCard.number : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Address: <br/> {{client.idCard ? client.idCard.address : ""}}</mat-list-item>
+        <mat-list-item role="listitem">Date of Birth: <br/> {{client.idCard ? client.idCard.dateOfBirth : ""}}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+</body>

@@ -56,6 +56,7 @@ public class TicketController {
                 ticketService.updateTicket(
                         ticketConverter.convertDtoToModel(dto)
                 ));
+
         log.trace("updateTicket - method finished: ticketDto={}", ticketDto);
 
         return ticketDto;

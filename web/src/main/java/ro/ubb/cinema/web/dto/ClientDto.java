@@ -11,5 +11,5 @@ public class ClientDto extends BaseDto{
     private String firstName;
     private String lastName;
     private String email;
-    private Integer age;
+    private IDCardDto idCard;
 }

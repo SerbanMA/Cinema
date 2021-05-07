@@ -60,6 +60,7 @@ import {TicketService} from "./ticket/shared/ticket.service";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {NgxMatDatetimePickerModule, NgxMatNativeDateModule} from "@angular-material-components/datetime-picker";
+import { IdCardComponent } from './id-card/id-card.component';
 
 
 @NgModule({
@@ -95,6 +96,7 @@ import {NgxMatDatetimePickerModule, NgxMatNativeDateModule} from "@angular-mater
     TicketAddComponent,
     TicketDeleteComponent,
     TicketUpdateComponent,
+    IdCardComponent,
 
   ],
   imports: [

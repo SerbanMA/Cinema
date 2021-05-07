@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.ubb.cinema.core.domain.entities.Movie;
-import ro.ubb.cinema.core.domain.validators.MovieValidator;
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 import ro.ubb.cinema.core.repository.MovieJDBCRepository;
 
 import javax.transaction.Transactional;
@@ -21,17 +19,14 @@ import java.util.List;
 
 @Service
 public class MovieServiceImpl implements MovieService {
+    private static final Logger log = LoggerFactory.getLogger(MovieServiceImpl.class);
+
     @Autowired
     private MovieJDBCRepository repository;
 
-    private final MovieValidator movieValidator = new MovieValidator();
-    private static final Logger log = LoggerFactory.getLogger(MovieServiceImpl.class);
-
-
     @Override
-    public Movie saveMovie(Movie movie) throws ValidatorException {
+    public Movie saveMovie(Movie movie) {
         log.trace("addMovie - method entered: movie={}", movie);
-//        movieValidator.validate(movie);
         Movie returnedMovie = repository.save(movie);
         log.trace("addMovie - method finished");
         return returnedMovie;
@@ -48,7 +43,6 @@ public class MovieServiceImpl implements MovieService {
     @Transactional
     public Movie updateMovie(Movie movie) {
         log.trace("updateMovie - method entered: movie={}", movie);
-//        movieValidator.validate(movie);
         Movie updateMovie = repository.findById(movie.getId()).orElseThrow();
         updateMovie.setName(movie.getName());
         updateMovie.setGenre(movie.getGenre());

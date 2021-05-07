@@ -1,7 +1,6 @@
 package ro.ubb.cinema.core.service;
 
 import ro.ubb.cinema.core.domain.entities.Movie;
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface MovieService {
      * @param movie
      *            must not be null
      */
-     Movie saveMovie(Movie movie) throws ValidatorException;
+     Movie saveMovie(Movie movie);
 
     /**
      * Removes from the repository the movie which has the same id as the given parameter
@@ -28,7 +27,7 @@ public interface MovieService {
      * @param movie
      *            must not be null.
      */
-     Movie updateMovie(Movie movie) throws ValidatorException;
+     Movie updateMovie(Movie movie);
 
     /**
      *

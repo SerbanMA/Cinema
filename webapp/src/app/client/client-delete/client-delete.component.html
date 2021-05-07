@@ -11,10 +11,15 @@
   <mat-card-content>
 
     <mat-list role="list">
-      <mat-list-item role="listitem">First Name: {{client.firstName}}</mat-list-item>
-      <mat-list-item role="listitem">Last Name: {{client.lastName}}</mat-list-item>
-      <mat-list-item role="listitem">Email: {{client.email}}</mat-list-item>
-      <mat-list-item role="listitem">Age: {{client.age}}</mat-list-item>
+      <mat-list-item role="listitem">First Name: {{client ? client.firstName : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Last Name: {{client ? client.lastName : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Email: {{client ? client.email : ""}}</mat-list-item>
+      <br/>
+      <mat-list-item role="listitem">CNP: {{client && client.idCard ? client.idCard.cnp : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Series: {{client && client.idCard ? client.idCard.series : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Number: {{client && client.idCard ? client.idCard.number : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Address: {{client && client.idCard ? client.idCard.address : ""}}</mat-list-item>
+      <mat-list-item role="listitem">Date of Birth: {{client && client.idCard ? client.idCard.dateOfBirth : ""}}</mat-list-item>
     </mat-list>
 
     <mat-action-list>

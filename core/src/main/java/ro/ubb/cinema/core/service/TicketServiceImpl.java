@@ -4,10 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.ubb.cinema.core.domain.entities.Movie;
 import ro.ubb.cinema.core.domain.entities.Ticket;
-import ro.ubb.cinema.core.domain.validators.TicketValidator;
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 import ro.ubb.cinema.core.repository.ClientJDBCRepository;
 import ro.ubb.cinema.core.repository.MovieJDBCRepository;
 import ro.ubb.cinema.core.repository.RoomJDBCRepository;
@@ -20,6 +17,8 @@ import java.util.List;
 
 @Service
 public class TicketServiceImpl implements TicketService {
+    private static final Logger log = LoggerFactory.getLogger(TicketServiceImpl.class);
+
     @Autowired
     private TicketJDBCRepository repository;
     @Autowired
@@ -29,13 +28,9 @@ public class TicketServiceImpl implements TicketService {
     @Autowired
     private MovieJDBCRepository movieRepository;
 
-    private final TicketValidator ticketValidator = new TicketValidator();
-    private static final Logger log = LoggerFactory.getLogger(TicketServiceImpl.class);
-
     @Override
-    public Ticket saveTicket(Ticket ticket) throws ValidatorException {
+    public Ticket saveTicket(Ticket ticket) {
         log.trace("addTicket - method entered: ticket={}", ticket);
-//        ticketValidator.validate(ticket);
         Ticket returnedTicket = repository.save(ticket);
         log.trace("addTicket - method finished");
         return returnedTicket;
@@ -50,9 +45,8 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     @Transactional
-    public Ticket updateTicket(Ticket ticket) throws ValidatorException {
+    public Ticket updateTicket(Ticket ticket) {
         log.trace("updateTicket - method entered: ticket={}", ticket);
-//        ticketValidator.validate(ticket);
         Ticket updateTicket = repository.findById(ticket.getId()).orElseThrow();
         updateTicket.setRoom(ticket.getRoom());
         updateTicket.setClient(ticket.getClient());

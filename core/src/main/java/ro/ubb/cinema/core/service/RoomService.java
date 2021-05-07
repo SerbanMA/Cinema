@@ -1,6 +1,5 @@
 package ro.ubb.cinema.core.service;
 
-import ro.ubb.cinema.core.domain.validators.exceptions.ValidatorException;
 import ro.ubb.cinema.core.domain.entities.Room;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public interface RoomService {
      *
      * @param room - the room to be added
      */
-    Room saveRoom(Room room) throws ValidatorException;
+    Room saveRoom(Room room);
 
     /**
      * Deletes given room
@@ -26,7 +25,7 @@ public interface RoomService {
      *
      * @param room - the room to be updated
      */
-    Room updateRoom(Room room) throws ValidatorException;
+    Room updateRoom(Room room);
 
     /**
      * Returns all rooms

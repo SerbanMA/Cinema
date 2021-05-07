@@ -5,6 +5,8 @@ import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {IDCard} from "../../id-card/shared/id-card.model";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-client-update',
@@ -13,13 +15,20 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ClientUpdateComponent implements OnInit {
 
+  startAt: Date = new Date(2000, 0, 1);
+  startView: string = "multi-year";
+
   id : number;
 
   formGroup = new FormGroup({
     formFirstName : new FormControl('', [Validators.required]),
     formLastName : new FormControl('', [Validators.required]),
     formEmail : new FormControl('', [Validators.required, Validators.email]),
-    formAge : new FormControl('', [Validators.min(0), Validators.max(200)]),
+    formCNP : new FormControl(),
+    formSeries : new FormControl(),
+    formNumber : new FormControl(),
+    formAddress : new FormControl(),
+    formDateOfBirth : new FormControl(),
   });
 
   constructor(private clientService : ClientService, private activatedRoute : ActivatedRoute, private router : Router, private snack : MatSnackBar) { }
@@ -32,7 +41,11 @@ export class ClientUpdateComponent implements OnInit {
         this.formGroup.controls['formFirstName'].setValue(client.firstName);
         this.formGroup.controls['formLastName'].setValue(client.lastName);
         this.formGroup.controls['formEmail'].setValue(client.email);
-        this.formGroup.controls['formAge'].setValue(client.age);
+        this.formGroup.controls['formCNP'].setValue(client.idCard.cnp);
+        this.formGroup.controls['formSeries'].setValue(client.idCard.series);
+        this.formGroup.controls['formNumber'].setValue(client.idCard.number);
+        this.formGroup.controls['formAddress'].setValue(client.idCard.address);
+        this.formGroup.controls['formDateOfBirth'].setValue(new Date(client.idCard.dateOfBirth));
       });
   }
 
@@ -42,7 +55,15 @@ export class ClientUpdateComponent implements OnInit {
       firstName: this.formGroup.controls['formFirstName'].value,
       lastName: this.formGroup.controls['formLastName'].value,
       email:  this.formGroup.controls['formEmail'].value,
-      age: this.formGroup.controls['formAge'].value
+      idCard: <IDCard><unknown>{
+        cnp: this.formGroup.controls['formCNP'].value,
+        series: this.formGroup.controls['formSeries'].value,
+        number: this.formGroup.controls['formNumber'].value,
+        address: this.formGroup.controls['formAddress'].value,
+        dateOfBirth: this.formGroup.controls['formDateOfBirth'].value ?
+          formatDate(this.formGroup.controls['formDateOfBirth'].value, 'dd/MM/yyyy', 'en-US') :
+          null,
+      },
     }
     this.clientService.updateClient(client).subscribe(() => {
       this.router.navigate(['/clients']).
