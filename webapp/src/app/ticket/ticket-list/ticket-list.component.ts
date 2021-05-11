@@ -26,7 +26,6 @@ export class TicketListComponent implements OnInit {
   ngOnInit(): void {
     this.ticketService.getTickets()
       .subscribe(tickets => {
-        console.log(tickets);
         this.dataSource.data = tickets;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

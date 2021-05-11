@@ -65,10 +65,10 @@ export class ClientUpdateComponent implements OnInit {
           null,
       },
     }
+
     this.clientService.updateClient(client).subscribe(() => {
       this.router.navigate(['/clients']).
       then(() => this.snack.open("Client successfully updated", "x", {duration: 3000, panelClass: ['snackbar']}));
     });
   }
-
 }

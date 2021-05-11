@@ -5,14 +5,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.ubb.cinema.core.domain.entities.Ticket;
+import ro.ubb.cinema.core.domain.entities.Tuple;
 import ro.ubb.cinema.core.repository.ClientJDBCRepository;
 import ro.ubb.cinema.core.repository.MovieJDBCRepository;
 import ro.ubb.cinema.core.repository.RoomJDBCRepository;
 import ro.ubb.cinema.core.repository.TicketJDBCRepository;
 
 import javax.transaction.Transactional;
-import java.util.Comparator;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 
 @Service
@@ -79,4 +86,35 @@ public class TicketServiceImpl implements TicketService {
         log.trace("filterTicketsByPrice - method finished: filteredTickets={}", filteredTickets);
         return filteredTickets;
     }
+
+    public List<Tuple> getStatistics(){
+
+        List<Tuple> solution = new ArrayList<>();
+        List<Ticket> tickets = repository.findAll();
+
+        List<String> ticketsDate = tickets.stream()
+                .map(s -> s.getDate().getMonth().toString())
+                .collect(Collectors.toList());
+
+        Map<String, Long> counted = ticketsDate.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        counted.forEach((key, value) -> solution.add(new Tuple(key, Math.toIntExact(value))));
+
+        solution.sort((a, b) -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMMMM");
+            try {
+                System.out.println(sdf.parse(a.getX()));
+                return sdf.parse(a.getX()).compareTo(sdf.parse(b.getX()));
+            } catch (ParseException e) {
+                return a.getX().compareTo(b.getX());
+            }
+        });
+
+
+        return solution;
+    }
+
 }
+
+

@@ -88,6 +88,13 @@ export class TicketAddComponent implements OnInit {
   }
 
   saveTicket(): void{
+
+    let client = this.formGroup.controls['formClient'].value
+
+
+    client.idCard.dateOfBirth = formatDate(new Date(client.idCard.dateOfBirth), 'dd/MM/yyyy', 'en-US')
+
+
     const ticket : Ticket = <Ticket><unknown>{
       id: null,
       price: this.formGroup.controls['formPrice'].value,

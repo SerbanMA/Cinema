@@ -1,5 +1,6 @@
 package ro.ubb.cinema.web.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ro.ubb.cinema.web.dto.TicketDto;
 import ro.ubb.cinema.core.domain.entities.Ticket;
@@ -10,9 +11,12 @@ import java.time.LocalTime;
 @Component
 public class TicketConverter extends BaseConverter<Ticket, TicketDto>{
 
-    private final ClientConverter clientConverter = new ClientConverter();
-    private final MovieConverter movieConverter = new MovieConverter();
-    private final RoomConverter roomConverter = new RoomConverter();
+    @Autowired
+    private  ClientConverter clientConverter;
+    @Autowired
+    private  MovieConverter movieConverter;
+    @Autowired
+    private  RoomConverter roomConverter;
 
     @Override
     public Ticket convertDtoToModel(TicketDto dto) {

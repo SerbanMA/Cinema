@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Ticket} from "./ticket.model";
+import {Tuple} from "./tuple.model";
 
 
 
@@ -27,6 +28,10 @@ export class TicketService {
 
   deleteTicket(ticket : Ticket) : Observable<Ticket>{
     return this.httpClient.delete<Ticket>(this.url + '/'+ ticket.id);
+  }
+
+  getStatistics() : Observable<Tuple[]>{
+    return this.httpClient.get<Tuple[]>(this.url + '/getStatistics');
   }
 
 }

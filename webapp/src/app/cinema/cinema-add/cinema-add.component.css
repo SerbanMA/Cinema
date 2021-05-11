@@ -1,45 +1,57 @@
-@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
-
-mat-card{
-  border: 10px #66FCF1;
-  position: relative;
-  margin: 30px;
-  width: 300px;
-  background-color: #C5C6C7;
-  border-top: 7px solid #1F2233;
-  border-radius: 5px;
-}
-
-mat-card-content{
-  border-radius: 5px;
-
-}
 
 button{
   width: 60px;
   height: 40px;
   border-radius: 5px;
-  background: transparent;
-  border: 2px solid #1F2233;
+  background-color: var(--grey);
+  border: 2px solid var(--black);
 }
 
 button:hover{
-  background-color: #66FCF1;
+  background-color: var(--turquoise);
+}
+
+button:active{
+  background-color: var(--dark-turquoise);
+}
+
+button:disabled{
+  background-color: var(--red);
 }
 
 .back-button{
+  margin-top: 15px;
+  margin-left: 15px;
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  background: transparent;
-  border: 2px solid #1F2233;
-  margin: 0 0 20px -5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--black);
 }
 
 a{
   color: black;
 }
 
+.text-danger{
+  color: var(--red);
+  border: var(--red);
+}
+
+
+/*mat card*/
+mat-card{
+  position: relative;
+  margin: auto;
+  width: 400px;
+  background-color: var(--white);
+  border-top: 7px solid var(--black);
+  border-radius: 5px;
+}
+
+mat-card-content{
+  border-radius: 5px;
+}
 
 mat-card-title{
   color: black;
@@ -55,3 +67,6 @@ mat-card-actions{
   margin-right: 30px;
 }
 
+mat-form-field{
+  width: 100%;
+}

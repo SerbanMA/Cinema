@@ -1,0 +1,16 @@
+<body>
+
+<button class="back-button"> <a href="/tickets"> <mat-icon aria-hidden="false">chevron_left</mat-icon> </a> </button>
+
+<p> Tickets sold in every months </p>
+
+
+<div class="baseChart">
+  <canvas baseChart
+          [data]="chartData"
+          [labels]="chartLabels"
+          [colors]="chartColors"
+          [chartType]="chartType"></canvas>
+</div>
+
+</body>

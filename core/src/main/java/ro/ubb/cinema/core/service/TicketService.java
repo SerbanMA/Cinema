@@ -1,8 +1,10 @@
 package ro.ubb.cinema.core.service;
 
 import ro.ubb.cinema.core.domain.entities.Ticket;
+import ro.ubb.cinema.core.domain.entities.Tuple;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TicketService {
     /**
@@ -47,35 +49,5 @@ public interface TicketService {
      */
     List<Ticket> filterTicketsByPrice(Double i);
 
-//    /**
-//     * Deletes all Tickets whose date is equal with the given date.
-//     *
-//     * @param date - date
-//     */
-//    void deleteTicketsByDate(LocalDate date);
-//
-//    /**
-//     * Check if a ticket with the given identifier exists in the repository
-//     * @param identifier - long, the identifier of the ticket searched for
-//     * @return - boolean
-//     *              true, if the repo contains a ticket with the given identifier
-//     *              false, otherwise
-//     */
-//    Boolean containsOne(Long identifier);
-//
-//    /**
-//     * Return the ticket that have the given identifier
-//     * @param identifier - long, the identifier of the ticket searched for
-//     * @return - ticket object
-//     * @throws ArrayIndexOutOfBoundsException
-//     *          if ticket not found
-//     */
-//    Ticket get(Long identifier) throws ArrayIndexOutOfBoundsException;
-//
-//    /**
-//     * Returns the repository
-//     *
-//     * @return the repository
-//     */
-//    Repository<Long, Ticket> getRepository();
+    List<Tuple> getStatistics();
 }

@@ -1,5 +1,6 @@
 package ro.ubb.cinema.web.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ro.ubb.cinema.core.domain.entities.Room;
 import ro.ubb.cinema.web.dto.RoomDto;
@@ -7,7 +8,8 @@ import ro.ubb.cinema.web.dto.RoomDto;
 @Component
 public class RoomConverter extends BaseConverter<Room, RoomDto>{
 
-    private final CinemaConverter cinemaConverter = new CinemaConverter();
+    @Autowired
+    private CinemaConverter cinemaConverter;
 
     @Override
     public Room convertDtoToModel(RoomDto dto) {

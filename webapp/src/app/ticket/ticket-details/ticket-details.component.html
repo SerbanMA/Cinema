@@ -12,54 +12,45 @@
         <mat-list-item role="listitem">Date: {{ticket ? ticket.date : ""}}</mat-list-item>
         <mat-list-item role="listitem">Time: {{ticket ? ticket.time : ""}}</mat-list-item>
 
-        <mat-card class="content">
-          <mat-card-header>
-            <mat-card-title>Movie</mat-card-title>
-            <mat-card-subtitle>ID: {{ticket && ticket.movie ? ticket.movie.id : ""}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-list role="list">
-              <mat-list-item role="listitem">Name: {{ticket && ticket.movie ? ticket.movie.name : ""}}</mat-list-item>
-              <mat-list-item role="listitem">Genre: {{ticket && ticket.movie ? ticket.movie.genre : ""}}</mat-list-item>
-              <mat-list-item role="listitem">Duration: {{ticket && ticket.movie ? ticket.movie.duration : ""}}</mat-list-item>
+        <mat-action-list>
+          <mat-card-actions>
+            <button (click)="openMovie()" [disabled]="ticket == null" > <a routerLink="/tickets">
+              <mat-icon *ngIf="ticket != null" aria-hidden="false">theaters</mat-icon>
+              <mat-icon *ngIf="ticket == null" aria-hidden="false">report</mat-icon>
+            </a>
+            </button>
 
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
+            <button (click)="openRoom()" [disabled]="ticket == null" > <a routerLink="/tickets">
+              <mat-icon *ngIf="ticket != null" aria-hidden="false">sensor_door</mat-icon>
+              <mat-icon *ngIf="ticket == null" aria-hidden="false">report</mat-icon>
+            </a>
+            </button>
 
-        <mat-card class="content">
-          <mat-card-header>
-            <mat-card-title>Room</mat-card-title>
-            <mat-card-subtitle>ID: {{ticket && ticket.room ? ticket.room.id : ""}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-list role="list">
-              <mat-list-item role="listitem">Name: {{ticket && ticket.room ? ticket.room.name : ""}}</mat-list-item>
-              <mat-list-item role="listitem">Floor Number: {{ticket && ticket.room ? ticket.room.floorNumber : ""}}</mat-list-item>
-              <mat-list-item role="listitem">Number of Seats: {{ticket && ticket.room ? ticket.room.numberOfSeats : ""}}</mat-list-item>
-              <mat-list-item role="listitem">Cinema Name: {{ticket && ticket.room && ticket.room.cinema ? ticket.room.cinema.name : ""}}</mat-list-item>
+            <button (click)="openClient()" [disabled]="ticket == null" > <a routerLink="/tickets">
+              <mat-icon *ngIf="ticket != null" aria-hidden="false">person</mat-icon>
+              <mat-icon *ngIf="ticket == null" aria-hidden="false">report</mat-icon>
+            </a>
+            </button>
 
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
 
-        <mat-card class="content">
-          <mat-card-header>
-            <mat-card-title>Client</mat-card-title>
-            <mat-card-subtitle>ID: {{ticket && ticket.client ? ticket.client.id : ""}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-list role="list">
-              <mat-list-item role="listitem">Name: {{ticket && ticket.client ? ticket.client.firstName : ""}} {{ticket && ticket.client ? ticket.client.lastName : ""}}</mat-list-item>
-              <mat-list-item role="listitem">eMail: {{ticket && ticket.client ? ticket.client.email : ""}}</mat-list-item>
-
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
+          </mat-card-actions>
+        </mat-action-list>
 
       </mat-list>
     </mat-card-content>
   </mat-card>
+
+  <div *ngIf="isOpenMovie">
+    <app-movie-details [movie]="ticket ? ticket.movie : null"></app-movie-details>
+  </div>
+
+  <div *ngIf="isOpenRoom">
+    <app-room-details [room]="ticket ? ticket.room : null" [fromTicket]="true"></app-room-details>
+  </div>
+
+  <div *ngIf="isOpenClient">
+    <app-client-details [client]="ticket ? ticket.client : null" [fromTicket]="true"></app-client-details>
+  </div>
 
   <div class="space"></div>
 </div>
