@@ -61,6 +61,8 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {NgxMatDatetimePickerModule, NgxMatNativeDateModule} from "@angular-material-components/datetime-picker";
 import { IdCardComponent } from './id-card/id-card.component';
+import { TicketStatisticsComponent } from './ticket/ticket-statistics/ticket-statistics.component';
+import {BaseChartDirective, ChartsModule} from "ng2-charts";
 
 
 @NgModule({
@@ -97,6 +99,7 @@ import { IdCardComponent } from './id-card/id-card.component';
     TicketDeleteComponent,
     TicketUpdateComponent,
     IdCardComponent,
+    TicketStatisticsComponent,
 
   ],
   imports: [
@@ -127,6 +130,8 @@ import { IdCardComponent } from './id-card/id-card.component';
     MatDatepickerModule,
     NgxMatNativeDateModule,
     NgxMatDatetimePickerModule,
+    ChartsModule,
+
   ],
   providers: [CinemaService, ClientService, MovieService, RoomService, TicketService],
   bootstrap: [AppComponent]

@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ro.ubb.cinema.core.domain.entities.Tuple;
 import ro.ubb.cinema.web.converter.TicketConverter;
 import ro.ubb.cinema.web.dto.TicketDto;
 import ro.ubb.cinema.core.service.TicketService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class TicketController {
@@ -84,5 +86,19 @@ public class TicketController {
         log.trace("filterByPrice - method finished");
         return ticketsDto;
     }
+
+    @RequestMapping(value = "/tickets/getStatistics")
+    List<Tuple> getStatistics() {
+        log.trace("getStatistics - method entered");
+
+        List<Tuple> solution = ticketService.getStatistics();
+
+        System.out.println(solution);
+
+        log.trace("getStatistics - method finished");
+        return solution;
+    }
+
+
 }
 
